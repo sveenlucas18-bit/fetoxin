@@ -2662,6 +2662,7 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   line-height: normal;
   align-items: center;
   justify-content: center;
+  background-color: #6DC7D7;
   color: var(--color-primary-button-text);
   padding-inline: var(--cart-padding);
 }
@@ -2673,6 +2674,7 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   border-radius: var(--style-border-radius-lg);
 }
 
+
 .cart-bubble__text {
   font-size: var(--font-size--3xs);
   z-index: var(--layer-flat);
@@ -2680,6 +2682,11 @@ product-price.text-block:is(.h1, .h2, .h3, .h4, .h5, .h6) > *:not(.tax-note) {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.cart-bubble__text {
+  color: white !important; 
+  font-size: 15px !important; 
 }
 
 /* Quantity selector */
