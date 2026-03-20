@@ -2,16 +2,25 @@
   Renders the cart summary totals.
 
   @param {string} [accelerated_checkout_buttons_layout] - { 'vertical' } Forced layout of the additional checkout buttons, instead of relying on platform's layout.
+  @param {string} [drawer_context] - Pass 'drawer' when rendering inside the cart drawer; discount UI is rendered above the product list instead.
 {%- enddoc -%}
 
 <div class="cart__summary-totals">
+  {%- liquid
+    if drawer_context == 'drawer'
+      assign currency_symbol = cart.currency.symbol
+      assign original_total_price = cart.original_total_price | money_without_currency | append: ' ' | append: currency_symbol
+    else
+      assign original_total_price = cart.original_total_price | money
+    endif
+  -%}
   {% # We need to keep this node in place to allow morphing to work properly # %}
   <div class="cart__original-total-container cart-primary-typography">
     {%- if cart.cart_level_discount_applications.size > 0 -%}
       <span class="cart__summary-item cart__original-total">
         <span class="cart__original-total-label">{{ 'content.cart_subtotal' | t }}</span>
         <span class="cart__original-total-value cart-secondary-typography">
-          {{- cart.original_total_price | money -}}
+          {{- original_total_price -}}
         </span>
       </span>
       <div class="cart__summary-discounts">
@@ -21,13 +30,20 @@
           aria-label="{{ 'content.discounts' | t }}"
         >
           {%- for discount in cart.cart_level_discount_applications -%}
+            {%- liquid
+              if drawer_context == 'drawer'
+                assign discount_total_allocated_amount = discount.total_allocated_amount | money_without_currency | append: ' ' | append: currency_symbol
+              else
+                assign discount_total_allocated_amount = discount.total_allocated_amount | money
+              endif
+            -%}
             <li class="cart__summary-item cart__discount">
               <span class="cart__discount-label">
                 {{- 'icon-discount.svg' | inline_asset_content -}}
                 {{ discount.title | escape }}
               </span>
               <span class="cart__discount-value cart-secondary-typography"
-                >-{{ discount.total_allocated_amount | money -}}
+                >-{{ discount_total_allocated_amount -}}
               </span>
             </li>
           {%- endfor -%}
@@ -87,141 +103,21 @@
           </accordion-custom>
         </cart-note>
       {% endif %}
-      {% if settings.show_cart_note and settings.show_add_discount_code %}
+      {% if settings.show_cart_note and settings.show_add_discount_code and drawer_context != 'drawer' %}
         <div class="cart-actions__divider"></div>
       {% endif %}
       {% if settings.show_add_discount_code %}
-        {% liquid
-          assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
-          for item in cart.items
-            for allocation in item.line_level_discount_allocations
-              if allocation.discount_application.type == 'discount_code'
-                assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
-              endif
-            endfor
-          endfor
-
-          assign discount_codes = discount_codes | uniq
-
-          # Evaluate the boolean expression for the disclosure state
-          if discount_codes.size == 0
-            assign disclosure_expanded = false
-          else
-            assign disclosure_expanded = true
-          endif
-        %}
-
-        <disclosure-custom class="cart-discount">
-          <button
-            aria-controls="cart-discount-disclosure"
-            aria-expanded="{% if disclosure_expanded %}true{% else %}false{% endif %}"
-            aria-label="{% if disclosure_expanded %}{{ 'actions.close' | t }}{% else %}{{ 'actions.open' | t }}{% endif %} {{ 'accessibility.discount_menu' | t }}"
-            class="disclosure-trigger"
-            data-disclosure-open="{{ 'actions.open' | t }} {{ 'accessibility.discount_menu' | t }}"
-            data-disclosure-close="{{ 'actions.close' | t }} {{ 'accessibility.discount_menu' | t }}"
-            on:click="/toggleDisclosure"
-            ref="disclosureTrigger"
-            type="button"
-          >
-            <span class="disclosure-trigger__label cart-primary-typography">{{ 'content.discount' | t }}</span>
-
-            <span class="svg-wrapper icon-plus">
-              {{- 'icon-plus.svg' | inline_asset_content -}}
-            </span>
-          </button>
-
-          <div
-            class="disclosure-content"
-            {% unless disclosure_expanded %}
-              inert
-            {% endunless %}
-            ref="disclosureContent"
-          >
-            <div id="cart-discount-disclosure">
-              <cart-discount-component
-                data-section-id="{{ section.id }}"
-              >
-                <div class="cart-discount__content">
-                  <form
-                    on:submit="/applyDiscount"
-                    onsubmit="return false;"
-                    class="cart-discount__form"
-                  >
-                    <label
-                      for="cart-discount"
-                      class="visually-hidden"
-                    >
-                      {{- 'accessibility.discount' | t -}}
-                    </label>
-                    <input
-                      id="cart-discount"
-                      class="cart-discount__input"
-                      type="text"
-                      name="discount"
-                      size="8"
-                      placeholder="{{ 'content.discount_code' | t }}"
-                      required
-                    >
-                    <button
-                      type="submit"
-                      class="button button--primary cart-discount__button"
-                    >
-                      {{ 'actions.apply' | t }}
-                    </button>
-                  </form>
-                </div>
-                <div
-                  class="cart-discount__error hidden"
-                  role="alert"
-                  ref="cartDiscountError"
-                >
-                  <span class="svg-wrapper">
-                    {{- 'icon-error.svg' | inline_asset_content -}}
-                  </span>
-                  <small
-                    class="cart-discount__error-text cart-primary-typography hidden"
-                    ref="cartDiscountErrorDiscountCode"
-                  >
-                    {{ 'content.discount_code_error' | t: code: 'test' }}
-                  </small>
-                  <small
-                    class="cart-discount__error-text cart-primary-typography hidden"
-                    ref="cartDiscountErrorShipping"
-                  >
-                    {{ 'content.shipping_discount_error' | t }}
-                  </small>
-                </div>
-                <ul class="cart-discount__codes">
-                  {% for discount_code in discount_codes %}
-                    <li
-                      class="cart-discount__pill"
-                      data-discount-code="{{ discount_code }}"
-                      aria-label="{{ 'accessibility.discount_applied' | t: code: discount_code }}"
-                    >
-                      <p class="cart-discount__pill-code">
-                        {{ discount_code }}
-                      </p>
-                      <button
-                        type="button"
-                        on:click="/removeDiscount"
-                        class="cart-discount__pill-remove svg-wrapper svg-wrapper--smaller button-unstyled"
-                        aria-label="{{ 'actions.remove_discount' | t: code: discount_code }}"
-                      >
-                        {{- 'icon-filters-close.svg' | inline_asset_content -}}
-                      </button>
-                    </li>
-                  {% endfor %}
-                </ul>
-              </cart-discount-component>
-            </div>
-          </div>
-        </disclosure-custom>
+        {% unless drawer_context == 'drawer' %}
+          {% render 'cart-discount-block', section_id: section.id %}
+        {% endunless %}
       {% endif %}
     </div>
   {% endif %}
 
   {%- liquid
-    if settings.currency_code_enabled_cart_total
+    if drawer_context == 'drawer'
+      assign total_price = cart.total_price | money_without_currency | append: ' ' | append: currency_symbol
+    elsif settings.currency_code_enabled_cart_total
       assign total_price = cart.total_price | money_with_currency
     else
       assign total_price = cart.total_price | money
@@ -267,11 +163,16 @@
       disabled
     {% endif %}
     form="cart-form"
+    style="--button-background-color: #6dc7d7; --button-color: #fff; --button-border-color: transparent; --button-background-hover: #5fb8c6;"
+    aria-label="{{ 'content.checkout' | t }} {{ total_price | strip_html }}"
   >
-    {{ 'content.checkout' | t }}
+    <span class="cart__checkout-button-inner">
+      {{- 'content.checkout' | t -}}
+      <span class="cart__checkout-button-total"> {{ total_price }}</span>
+    </span>
   </button>
 
-  {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
+  {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons and drawer_context != 'drawer' %}
     <div
       class="
         additional-checkout-buttons
@@ -280,6 +181,39 @@
     >
       {{ content_for_additional_checkout_buttons }}
     </div>
+  {% endif %}
+
+  {% if settings.cart_drawer_checkout_image != blank %}
+    <div class="cart__checkout-image">
+      <img
+        src="{{ settings.cart_drawer_checkout_image | image_url: width: 800 }}"
+        alt="{{ settings.cart_drawer_checkout_image.alt | default: '' }}"
+        width="{{ settings.cart_drawer_checkout_image.width }}"
+        height="{{ settings.cart_drawer_checkout_image.height }}"
+        loading="lazy"
+      >
+    </div>
+  {% endif %}
+
+  {% if settings.cart_drawer_badge_text_1 != blank or settings.cart_drawer_badge_text_2 != blank %}
+    <ul class="cart__trust-badges list-unstyled">
+      {% if settings.cart_drawer_badge_text_1 != blank %}
+        <li class="cart__trust-badge">
+          <span class="cart__trust-badge-check" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span class="cart__trust-badge-text">{{ settings.cart_drawer_badge_text_1 }}</span>
+        </li>
+      {% endif %}
+      {% if settings.cart_drawer_badge_text_2 != blank %}
+        <li class="cart__trust-badge">
+          <span class="cart__trust-badge-check" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </span>
+          <span class="cart__trust-badge-text">{{ settings.cart_drawer_badge_text_2 }}</span>
+        </li>
+      {% endif %}
+    </ul>
   {% endif %}
 </div>
 
@@ -311,10 +245,8 @@
   .cart-discount__input {
     background-color: var(--color-input-background);
     color: var(--color-input-text);
-    border-width: var(--style-border-width-inputs);
-    border-color: var(--color-input-border);
-    border-style: solid;
-    border-radius: var(--style-border-radius-inputs);
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
     padding: var(--padding-sm) var(--padding-md);
     height: 100%;
     flex-grow: 1;
@@ -323,15 +255,18 @@
   }
 
   .cart-discount__input::placeholder {
-    color: rgb(var(--color-input-text-rgb) / var(--opacity-subdued-text));
+    color: #9e9e9e;
   }
 
   .cart-discount__pill-code {
     overflow: hidden;
-    max-width: 100px;
+    max-width: 120px;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0;
+    font-size: var(--cart-font-size--sm);
+    font-weight: 500;
+    color: #2d6a6f;
   }
 
   .cart-discount {
@@ -350,6 +285,7 @@
     list-style: none;
     padding-inline: 0;
     margin: 0;
+    padding-block-start: var(--padding-xs);
   }
 
   .cart-discount__codes:has(.cart-discount__pill) {
@@ -358,6 +294,17 @@
 
   .cart-discount__button {
     height: 100%;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    background: #6DC7D7;
+    font-weight: 700;
+    padding-inline: var(--padding-md);
+    flex-shrink: 0;
+  }
+
+  .cart-discount__button:hover {
+    background-color: #5fb8c6;
   }
 
   .cart-discount__content {
@@ -365,32 +312,65 @@
   }
 
   .cart-discount__pill {
-    display: flex;
-    color: var(--color-foreground);
-    gap: var(--padding-xs);
+    display: inline-flex;
     align-items: center;
+    gap: var(--padding-xs);
     padding: var(--padding-xs) var(--padding-sm);
-    border-radius: var(--style-border-radius-pills);
-    background-color: var(--color-input-background);
-    text-transform: uppercase;
+    border-radius: 6px;
+    background-color: #e0f7fa;
+    border: 1px solid #76c8d5;
+  }
+
+  .cart-discount__pill-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #76c8d5;
+    color: #fff;
+  }
+
+  .cart-discount__pill-check svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .cart-discount__pill-remove {
+    --close-icon-opacity: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #76c8d5;
+    color: #fff;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .cart-discount__pill-remove:hover {
+    background-color: #5fb8c6;
+    color: #fff;
+  }
+
+  .cart-discount__pill-remove svg {
+    width: 12px;
+    height: 12px;
   }
 
   .cart-discount__form {
     display: flex;
-    gap: var(--padding-md);
+    gap: var(--padding-sm);
     align-items: center;
     height: 100%;
     padding-block: var(--padding-2xs) var(--padding-sm);
-  }
-
-  :is(.cart-discount__pill-remove, .cart-discount__pill-remove:hover) {
-    --close-icon-opacity: 0.4;
-
-    color: var(--color-foreground);
-    background-color: transparent;
-    pointer-events: all;
-    cursor: pointer;
-    height: 100%;
   }
 
   .cart-discount__error {
@@ -411,74 +391,99 @@
     margin-block-start: var(--margin-3xs);
   }
 
-  .disclosure-trigger {
-    cursor: pointer;
-    color: var(--color-foreground);
+  .cart-discount--always-open .cart-discount__form {
+    padding-block-start: 0;
+  }
+
+  /* Checkout CTA: keep teal + white text even when .button vars resolve late (morph / FOUC) */
+  .cart__ctas {
+    width: 100%;
+    display: grid;
+    gap: var(--checkout-button-gap, 10px);
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+
+  .cart__additional-checkout-buttons {
+    width: 100%;
+  }
+
+  .cart__ctas .cart__checkout-button {
+    width: 100%;
+    height: clamp(25px, var(--height-buy-buttons), 55px);
+    padding-inline: var(--padding-4xl);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff !important;
+    background-color: #6dc7d7 !important;
+    box-shadow: none !important;
+  }
+
+  .cart__checkout-button:hover:not(:disabled) {
+    color: #fff !important;
+    background-color: #5fb8c6 !important;
+  }
+
+  .cart__checkout-button:disabled,
+  .cart__checkout-button[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: #fff !important;
+    background-color: #6dc7d7 !important;
+  }
+
+  .cart__checkout-button-inner {
+    display: inline;
+  }
+
+  .cart__checkout-button-total {
+    font-weight: 700;
+  }
+
+  shopify-accelerated-checkout-cart {
+    --shopify-accelerated-checkout-inline-alignment: center;
+    --shopify-accelerated-checkout-button-border-radius: var(--style-border-radius-buttons-primary);
+    --shopify-accelerated-checkout-row-gap: var(--checkout-button-gap, 10px);
+  }
+
+  .cart__checkout-image {
+    width: 100%;
+    margin-block-start: var(--margin-sm, 12px);
+    text-align: center;
+  }
+
+  .cart__checkout-image img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .cart__trust-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-block-start: 14px;
+    padding: 0;
+  }
+
+  .cart__trust-badge {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding-block: var(--padding-sm);
-    padding-inline: 0;
-    width: 100%;
-    border: none;
-    background: #0000;
-
-    &[aria-expanded='true'] .horizontal {
-      rotate: 90deg;
-    }
-
-    &:is(:hover, :focus-visible) {
-      color: rgb(var(--color-foreground-rgb) / var(--opacity-subdued-text));
-    }
-
-    .horizontal {
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-
-    svg {
-      aspect-ratio: 1;
-      width: var(--icon-size-xs);
-      height: var(--icon-size-xs);
-    }
+    gap: 8px;
   }
 
-  .disclosure-trigger__label {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--gap-2xs);
-    font-size: var(--cart-font-size--2xs);
+  .cart__trust-badge-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #333;
+  }
+
+  .cart__trust-badge-text {
+    font-size: var(--cart-font-size--sm, 14px);
+    color: #333;
     font-weight: 500;
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .disclosure-trigger .horizontal {
-      transition: rotate var(--surface-transition-duration) var(--surface-transition-timing);
-    }
-  }
-
-  .disclosure-content {
-    display: grid;
-    grid-template-rows: 1fr;
-    /* stylelint-disable-next-line plugin/no-unsupported-browser-features */
-    clip-path: inset(-5% -5% 0 -5%);
-    opacity: 1;
-
-    &[inert] {
-      grid-template-rows: 0fr;
-      opacity: 0;
-    }
-
-    & > * {
-      min-height: 0;
-    }
-  }
-
-  @media (prefers-reduced-motion: no-preference) {
-    .disclosure-content {
-      transition-property: grid-template-rows, opacity;
-      transition-duration: var(--surface-transition-duration);
-      transition-timing-function: var(--surface-transition-timing);
-    }
   }
 {% endstylesheet %}
