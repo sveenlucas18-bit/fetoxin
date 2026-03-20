@@ -1,0 +1,369 @@
+
+    {% render 'gp-head', isThemeSection: true %}
+    
+    <style {% if section.settings.section_preload == "false" %} class="gps-link gps-style" type="text/disabled-css" {% endif %}>.gps-606424092790227866.gps.gpsil [style*="--bg:"]{background:var(--bg)}.gps-606424092790227866.gps.gpsil [style*="--hvr-bg:"]:hover{background:var(--hvr-bg)}.gps-606424092790227866.gps.gpsil [style*="--bga:"]{background-attachment:var(--bga)}.gps-606424092790227866.gps.gpsil [style*="--bgc:"]{background-color:var(--bgc)}.gps-606424092790227866.gps.gpsil [style*="--bgi:"]{background-image:var(--bgi)}.gps-606424092790227866.gps.gpsil [style*="--hvr-bgi:"]:hover{background-image:var(--hvr-bgi)}.gps-606424092790227866.gps.gpsil [style*="--bgp:"]{background-position:var(--bgp)}.gps-606424092790227866.gps.gpsil [style*="--bgr:"]{background-repeat:var(--bgr)}.gps-606424092790227866.gps.gpsil [style*="--bgs:"]{background-size:var(--bgs)}.gps-606424092790227866.gps.gpsil [style*="--b:"]{border:var(--b)}.gps-606424092790227866.gps.gpsil [style*="--hvr-b:"]:hover{border:var(--hvr-b)}.gps-606424092790227866.gps.gpsil [style*="--bb:"]{border-bottom:var(--bb)}.gps-606424092790227866.gps.gpsil [style*="--hvr-bb:"]:hover{border-bottom:var(--hvr-bb)}.gps-606424092790227866.gps.gpsil [style*="--bc:"]{border-color:var(--bc)}.gps-606424092790227866.gps.gpsil [style*="--bblr:"]{border-bottom-left-radius:var(--bblr)}.gps-606424092790227866.gps.gpsil [style*="--hvr-bblr:"]:hover{border-bottom-left-radius:var(--hvr-bblr)}.gps-606424092790227866.gps.gpsil [style*="--bbrr:"]{border-bottom-right-radius:var(--bbrr)}.gps-606424092790227866.gps.gpsil [style*="--hvr-bbrr:"]:hover{border-bottom-right-radius:var(--hvr-bbrr)}.gps-606424092790227866.gps.gpsil [style*="--bs:"]{border-style:var(--bs)}.gps-606424092790227866.gps.gpsil [style*="--bt:"]{border-top:var(--bt)}.gps-606424092790227866.gps.gpsil [style*="--hvr-bt:"]:hover{border-top:var(--hvr-bt)}.gps-606424092790227866.gps.gpsil [style*="--btlr:"]{border-top-left-radius:var(--btlr)}.gps-606424092790227866.gps.gpsil [style*="--hvr-btlr:"]:hover{border-top-left-radius:var(--hvr-btlr)}.gps-606424092790227866.gps.gpsil [style*="--btrr:"]{border-top-right-radius:var(--btrr)}.gps-606424092790227866.gps.gpsil [style*="--hvr-btrr:"]:hover{border-top-right-radius:var(--hvr-btrr)}.gps-606424092790227866.gps.gpsil [style*="--bw:"]{border-width:var(--bw)}.gps-606424092790227866.gps.gpsil [style*="--shadow:"]{box-shadow:var(--shadow)}.gps-606424092790227866.gps.gpsil [style*="--c:"]{color:var(--c)}.gps-606424092790227866.gps.gpsil [style*="--hvr-c:"]:hover{color:var(--hvr-c)}.gps-606424092790227866.gps.gpsil [style*="--cg:"]{-moz-column-gap:var(--cg);column-gap:var(--cg)}.gps-606424092790227866.gps.gpsil [style*="--ff:"]{font-family:var(--ff)}.gps-606424092790227866.gps.gpsil [style*="--size:"]{font-size:var(--size)}.gps-606424092790227866.gps.gpsil [style*="--weight:"]{font-weight:var(--weight)}.gps-606424092790227866.gps.gpsil [style*="--fs:"]{font-style:var(--fs)}.gps-606424092790227866.gps.gpsil [style*="--gtc:"]{grid-template-columns:var(--gtc)}.gps-606424092790227866.gps.gpsil [style*="--h:"]{height:var(--h)}.gps-606424092790227866.gps.gpsil [style*="--jc:"]{justify-content:var(--jc)}.gps-606424092790227866.gps.gpsil [style*="--ls:"]{letter-spacing:var(--ls)}.gps-606424092790227866.gps.gpsil [style*="--lh:"]{line-height:var(--lh)}.gps-606424092790227866.gps.gpsil [style*="--tdt:"]{text-decoration-thickness:var(--tdt)}.gps-606424092790227866.gps.gpsil [style*="--tdl:"]{text-decoration-line:var(--tdl)}.gps-606424092790227866.gps.gpsil [style*="--m:"]{margin:var(--m)}.gps-606424092790227866.gps.gpsil [style*="--ml:"]{margin-left:var(--ml)}.gps-606424092790227866.gps.gpsil [style*="--op:"]{opacity:var(--op)}.gps-606424092790227866.gps.gpsil [style*="--o:"]{order:var(--o)}.gps-606424092790227866.gps.gpsil [style*="--pc:"]{place-content:var(--pc)}.gps-606424092790227866.gps.gpsil [style*="--p:"]{padding:var(--p)}.gps-606424092790227866.gps.gpsil [style*="--pb:"]{padding-bottom:var(--pb)}.gps-606424092790227866.gps.gpsil [style*="--pl:"]{padding-left:var(--pl)}.gps-606424092790227866.gps.gpsil [style*="--pr:"]{padding-right:var(--pr)}.gps-606424092790227866.gps.gpsil [style*="--pt:"]{padding-top:var(--pt)}.gps-606424092790227866.gps.gpsil [style*="--rg:"]{row-gap:var(--rg)}.gps-606424092790227866.gps.gpsil [style*="--ta:"]{text-align:var(--ta)}.gps-606424092790227866.gps.gpsil [style*="--ts:"]{text-shadow:var(--ts)}.gps-606424092790227866.gps.gpsil [style*="--tt:"]{text-transform:var(--tt)}.gps-606424092790227866.gps.gpsil [style*="--t:"]{transform:var(--t)}.gps-606424092790227866.gps.gpsil [style*="--w:"]{width:var(--w)}.gps-606424092790227866.gps.gpsil [style*="--line-clamp:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp)}@media only screen and (max-width:1024px){.gps-606424092790227866.gps.gpsil [style*="--size-tablet:"]{font-size:var(--size-tablet)}.gps-606424092790227866.gps.gpsil [style*="--h-tablet:"]{height:var(--h-tablet)}.gps-606424092790227866.gps.gpsil [style*="--ls-tablet:"]{letter-spacing:var(--ls-tablet)}.gps-606424092790227866.gps.gpsil [style*="--lh-tablet:"]{line-height:var(--lh-tablet)}.gps-606424092790227866.gps.gpsil [style*="--ml-tablet:"]{margin-left:var(--ml-tablet)}.gps-606424092790227866.gps.gpsil [style*="--w-tablet:"]{width:var(--w-tablet)}.gps-606424092790227866.gps.gpsil [style*="--line-clamp-tablet:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp-tablet)}}@media only screen and (max-width:767px){.gps-606424092790227866.gps.gpsil [style*="--cg-mobile:"]{-moz-column-gap:var(--cg-mobile);column-gap:var(--cg-mobile)}.gps-606424092790227866.gps.gpsil [style*="--size-mobile:"]{font-size:var(--size-mobile)}.gps-606424092790227866.gps.gpsil [style*="--gtc-mobile:"]{grid-template-columns:var(--gtc-mobile)}.gps-606424092790227866.gps.gpsil [style*="--h-mobile:"]{height:var(--h-mobile)}.gps-606424092790227866.gps.gpsil [style*="--ls-mobile:"]{letter-spacing:var(--ls-mobile)}.gps-606424092790227866.gps.gpsil [style*="--lh-mobile:"]{line-height:var(--lh-mobile)}.gps-606424092790227866.gps.gpsil [style*="--ml-mobile:"]{margin-left:var(--ml-mobile)}.gps-606424092790227866.gps.gpsil [style*="--ta-mobile:"]{text-align:var(--ta-mobile)}.gps-606424092790227866.gps.gpsil [style*="--w-mobile:"]{width:var(--w-mobile)}.gps-606424092790227866.gps.gpsil [style*="--line-clamp-mobile:"]{display:-webkit-box;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:var(--line-clamp-mobile)}}.gps-606424092790227866 .gp-g-paragraph-1{font-family:var(--g-p1-ff);font-size:var(--g-p1-size);font-style:var(--g-p1-fs);font-weight:var(--g-p1-weight);letter-spacing:var(--g-p1-ls);line-height:var(--g-p1-lh)}.gps-606424092790227866 .gp-g-s-medium{padding:8px 24px}.gps-606424092790227866 .gp-fixed{position:fixed}.gps-606424092790227866 .gp-relative{position:relative}.gps-606424092790227866 .gp-top-\[27px\]{top:27px}.gps-606424092790227866 .gp-z-\[100\]{z-index:100}.gps-606424092790227866 .gp-mx-auto{margin-left:auto;margin-right:auto}.gps-606424092790227866 .gp-mb-0{margin-bottom:0}.gps-606424092790227866 .gp-flex{display:flex}.gps-606424092790227866 .gp-inline-flex{display:inline-flex}.gps-606424092790227866 .gp-grid{display:grid}.gps-606424092790227866 .\!gp-hidden{display:none!important}.gps-606424092790227866 .gp-hidden{display:none}.gps-606424092790227866 .gp-h-full{height:100%}.gps-606424092790227866 .gp-max-w-full{max-width:100%}.gps-606424092790227866 .gp-grid-rows-\[1fr\]{grid-template-rows:1fr}.gps-606424092790227866 .gp-flex-col{flex-direction:column}.gps-606424092790227866 .gp-items-center{align-items:center}.gps-606424092790227866 .gp-justify-center{justify-content:center}.gps-606424092790227866 .gp-overflow-hidden{overflow:hidden}.gps-606424092790227866 .gp-break-words{overflow-wrap:break-word}.gps-606424092790227866 .gp-rounded{border-radius:4px}.gps-606424092790227866 .\!gp-bg-none{background-image:none!important}.gps-606424092790227866 .gp-p-\[16px\]{padding:16px}.gps-606424092790227866 .gp-text-\[14px\]{font-size:14px}.gps-606424092790227866 .gp-leading-normal{line-height:1.5}.gps-606424092790227866 .gp-no-underline{text-decoration-line:none}.gps-606424092790227866 .\!gp-outline-none{outline:2px solid transparent!important;outline-offset:2px!important}.gps-606424092790227866 .gp-transition-colors{transition-duration:.15s;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-606424092790227866 .gp-duration-200{transition-duration:.2s}.gps-606424092790227866 .gp-ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.gps-606424092790227866 .disabled\:gp-btn-disabled:disabled{cursor:default}.gps-606424092790227866 .disabled\:gp-opacity-30:disabled{opacity:.3}.gps-606424092790227866 .gp-group\/button:active .group-active\/button\:\!gp-text-inherit{color:inherit!important}.gps-606424092790227866 .gp-group[data-state=loading] .group-data-\[state\=loading\]\:gp-invisible{visibility:hidden}@media (max-width:1024px){.gps-606424092790227866 .tablet\:\!gp-hidden{display:none!important}.gps-606424092790227866 .tablet\:gp-hidden{display:none}}@media (max-width:767px){.gps-606424092790227866 .mobile\:\!gp-hidden{display:none!important}.gps-606424092790227866 .mobile\:gp-hidden{display:none}}.gps-606424092790227866 .\[\&_\*\]\:gp-max-w-full *{max-width:100%}.gps-606424092790227866 .\[\&_p\]\:gp-whitespace-pre-line p{white-space:pre-line}</style>
+    <style {% if section.settings.section_preload == "false" %} class="gps-link" type="text/disabled-css" {% endif %}>@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf) format('truetype');
+}
+
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v20/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf) format('truetype');
+}
+</style>
+  
+    
+    
+    
+
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+
+    
+        <section
+          class="gp-mx-auto gp-max-w-full [&_*]:gp-max-w-full {% if section.settings.section_preload == "false" %}gps-lazy {% endif %}"
+          style="--w:100%;--w-tablet:calc(var(--g-ct-w, 100%) + 2 * var(--g-ct-p, 15px));--w-mobile:calc(var(--g-ct-w, 100%) + 2 * var(--g-ct-p, 15px))"
+        >
+          
+    <gp-row gp-data='{"background":{"desktop":{"type":"color","color":"#1C4151","image":{"src":"","width":0,"height":0},"size":"cover","position":{"x":50,"y":50},"repeat":"no-repeat","attachment":"scroll","preload":false}},"uid":"g8W1Og0fkb"}' data-id="g8W1Og0fkb" id="g8W1Og0fkb" data-same-height-subgrid-container class="g8W1Og0fkb gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--pt:var(--g-s-2xl);--pb:var(--g-s-2xl);--d:grid;--d-tablet:grid;--d-mobile:grid;--bs:solid;--bw:0px;--bc:#121212;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--shadow:none;--op:100%;--cg:32px;--gtc:minmax(0, 12fr);--w:100%;--bgc:#1C4151;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:start"
+      class="gKZ47LD_b_ gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+
+    
+
+    
+    <gp-row gp-data='{"uid":"gmCv2Ou8sL"}' data-id="gmCv2Ou8sL" id="gmCv2Ou8sL" data-same-height-subgrid-container class="gmCv2Ou8sL gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--pt:var(--g-s-l);--pl:var(--g-s-l);--pb:var(--g-s-l);--pr:var(--g-s-l);--d:grid;--d-tablet:grid;--d-mobile:grid;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--cg:41px;--rg:0px;--gtc:minmax(0, 5fr) minmax(0, 7fr);--gtc-mobile:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--h:auto;--pc:start">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:center;--o:1"
+      class="gkrsoRhvuS gp-relative gp-flex gp-flex-col"
+    >
+      
+    <div class="gp-mx-auto gp-max-w-full" style="--w:100%;--w-tablet:100%;--w-mobile:100%;--pt:24px;--pb:24px;--b:none;--bc:var(--g-c-line-3, line-3);--bw:0px 0px 0px 0px;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;--bblr:8px;--bbrr:8px;--btlr:8px;--btrr:8px;--shadow:none;--d:block;--d-tablet:block;--d-mobile:block;--bs:solid;--op:100%">
+      <gp-form
+        data-id="gJsjMxfnn6" id="gJsjMxfnn6" data-submit-action="stay-on-page"
+        data-callback='{"type":"stay-on-page","link":"","target":"_self"}'
+      >
+        <a
+          hidden="true" id="gp-form-callback-gJsjMxfnn6"
+        >
+        </a>
+        {% form 'customer', class: 'gp-form-gJsjMxfnn6 ', id: 'contact_form_gJsjMxfnn6' %}
+          {% if form.errors %}
+            <div
+              id="gp-form-error-gJsjMxfnn6"
+              class="gp-form-message gp-hidden gp-top-[27px] gp-fixed gp-rounded gp-p-[16px] gp-text-[14px] gp-leading-normal gp-z-[100]"
+              style="background-color:#FFE9E9;left:50%;transform:translateX(-50%);color:#F44336"
+            >
+              {{ section.settings.ggJsjMxfnn6_errorMessage }}
+            </div>
+          {% endif %}
+          <div popover id="my-popover-gJsjMxfnn6">
+            <style>
+              
+    #my-popover-gJsjMxfnn6::backdrop {
+      width: fit-content;
+      height: fit-content;
+    }
+  
+            </style>
+            <div
+              id="gp-form-success-gJsjMxfnn6"
+              class="gp-form-message gp-hidden gp-top-[27px] gp-fixed gp-rounded gp-p-[16px] gp-text-[14px] gp-leading-normal gp-z-[100]"
+              style="background-color:#F2FFEC;left:50%;transform:translateX(-50%);color:#00A042"
+            >
+              {{ section.settings.ggJsjMxfnn6_successMessage }}
+            </div>
+          </div>
+          
+    
+
+    
+
+    
+    <gp-row gp-data='{"uid":"gH6SVv2gzB"}' data-id="gH6SVv2gzB" id="gH6SVv2gzB" data-same-height-subgrid-container class="gH6SVv2gzB gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--d:grid;--d-tablet:grid;--d-mobile:grid;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--cg:0px;--cg-mobile:0px;--rg:0px;--gtc:minmax(0, 9fr) minmax(0, 3fr);--gtc-mobile:minmax(0, auto) minmax(0, auto);--w:100%;--h:auto;--pc:center">
+      
+
+      <div
+      data-same-height-display-contents
+      style="--jc:center"
+      class="gqrgfbTKhx gp-relative gp-flex gp-flex-col"
+    >
+      
+    <div
+      
+      data-id="gfJQxeCFrN"
+      class="gfJQxeCFrN flex flex-col"
+      style="--d:block;--d-tablet:block;--d-mobile:block;--op:100%;--ta:left"
+    >
+      
+      <input
+        type="email"
+        class="gp-form-item gp-g-paragraph-1 gp-g-s-medium !gp-outline-none !gp-bg-none email-form-gfJQxeCFrN"
+        style="--w:100%;--w-tablet:100%;--w-mobile:100%;--h:Auto;--h-tablet:Auto;--h-mobile:Auto;--pl:12px;--pr:12px;--pt:12px;--pb:12px;--size:17px;--size-tablet:22px;--size-mobile:21px;--b:solid;--bc:var(--g-c-line-2, line-2);--bw:1px 1px 1px 1px;--bs:solid;--bblr:8px;--bbrr:8px;--btlr:8px;--btrr:8px;--bgc:#FFFFFF;--bgi:url()"
+        placeholder="{{ section.settings.ggfJQxeCFrN_placeholder }}"
+        name="contact[email]"
+        required
+        autocomplete="email"
+        
+      ></input>
+    </div>
+  
+    </div><div
+      data-same-height-display-contents
+      style="--jc:center"
+      class="gieXpzECrF gp-relative gp-flex gp-flex-col"
+    >
+      
+    
+    <gp-button
+      gp-data='{}'
+      
+      class="gp-flex gp-flex-col"
+    >
+      <div style="--bs:solid;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-2, line-2);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--d:block;--d-tablet:block;--d-mobile:block;--op:100%;--ml:10px;--ml-tablet:10px;--ml-mobile:10px;--ta:left" >
+        <style>[data-id="glGGHPJITX"].gp-button-base::before, [data-id="glGGHPJITX-interaction"].gp-button-base::before {
+      
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    border-style: solid;
+  border-width: 0px 0px 0px 0px;
+  border-color: var(--g-c-line-3, line-3);
+  
+    
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      
+  
+    }
+  
+      
+  [data-id="glGGHPJITX"]:hover::before, [data-id="glGGHPJITX-interaction"]:hover::before {
+    
+    
+  }</style>
+        
+        <button
+          data-id="glGGHPJITX" dataId="glGGHPJITX" data-state="idle" aria-label="Anmelden"
+          
+          type="submit"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--h:Auto;--h-tablet:Auto;--h-mobile:Auto;--pl:24px;--pr:24px;--pt:12px;--pb:12px;--bblr:8px;--bbrr:8px;--btlr:8px;--btrr:8px;--hvr-bblr:8px;--hvr-bbrr:8px;--hvr-btlr:8px;--hvr-btrr:8px;--shadow:none;--bgi:;--hvr-bgi:;--bg:var(--g-c-brand, brand);--hvr-bg:#FFFFFF;--hvr-c:#1C4151;--c:#FFFFFF;--size:16px;--size-tablet:22px;--size-mobile:21px;--weight:bold"
+          class="glGGHPJITX gp-button-base gp-group gp-relative gp-inline-flex gp-max-w-full gp-items-center gp-justify-center gp-no-underline gp-transition-colors gp-duration-200 disabled:gp-btn-disabled disabled:gp-opacity-30  gp-g-paragraph-1"
+        >
+        
+        <div class="gp-inline-flex">
+          
+          
+    <span
+      data-gp-text
+      style="--size:16px;--size-tablet:22px;--size-mobile:21px;--weight:bold;word-break:break-word"
+      class="gp-content-product-button group-active/button:!gp-text-inherit gp-relative gp-flex gp-h-full gp-items-center gp-overflow-hidden gp-break-words group-data-[state=loading]:gp-invisible [&_p]:gp-whitespace-pre-line gp-text button-text"
+    >
+      {{ section.settings.gglGGHPJITX_label }}
+    </span>
+        </div>
+        
+        </button>
+      </div>
+      <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-button-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+    </gp-button>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+  
+        {% endform %}
+      </gp-form>
+    </div>
+    <script {% if section.settings.section_preload == "false" %}class="gps-link" delay {% else %}src{% endif %}="https://assets.gemcommerce.com/assets-v2/gp-form-v7-5.js?v={{ shop.metafields.GEMPAGES.ASSETS_VERSION }}" defer="defer"></script>
+  
+    </div><div
+      data-same-height-display-contents
+      style="--jc:center;--o:0"
+      class="gtexipPQz9 gp-relative gp-flex gp-flex-col"
+    >
+      
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="g31_2MTq7b"
+        class="g31_2MTq7b"
+        style="--ta:left;--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class=" gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--b:none;--bc:#121212;--bw:1px 1px 1px 1px;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--shadow:none;--ts:none;--ta:left;--ta-mobile:center;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--fs:normal;--ff:Inter, var(--g-font-body);--weight:400;--size:20px;--size-tablet:22px;--size-mobile:21px;--lh:120%;--lh-tablet:180%;--lh-mobile:120%;--ls:normal;--ls-tablet:normal;--ls-mobile:normal;--c:var(--g-c-text-1, text-1);--tt:none;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.gg31_2MTq7b_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="gorEsGq8ot"
+        class="gorEsGq8ot"
+        style="--ta:left;--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class=" gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--b:none;--bc:#121212;--bw:1px 1px 1px 1px;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--shadow:none;--ts:none;--ta:left;--ta-mobile:center;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--fs:normal;--ff:Inter, var(--g-font-body);--weight:400;--size:20px;--size-tablet:22px;--size-mobile:21px;--lh:100%;--lh-tablet:180%;--lh-mobile:120%;--ls:normal;--ls-tablet:normal;--ls-mobile:normal;--c:var(--g-c-text-1, text-1);--tt:none;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggorEsGq8ot_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+      
+    </gp-row>
+  
+  
+    </div>
+
+      
+    </gp-row>
+  
+        </section>
+      
+  
+    
+{% schema %}{
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "class": "gps-606424092790227866 gps gpsil",
+  "locales": {},
+  "name": "Newsletter",
+  "presets": [
+    {
+      "name": "Newsletter"
+    }
+  ],
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Section design by GemPages. [Click here to start design](https://admin.shopify.com/store/21zmyt-ua/apps/gempages-cro/app/shopify/edit?pageType=THEME_SECTION\u0026editorId=606424092790227866)"
+    },
+    {
+      "type": "select",
+      "label": "Section Preload",
+      "id": "section_preload",
+      "options": [
+        {
+          "label": "On",
+          "value": "true"
+        },
+        {
+          "label": "Off",
+          "value": "false"
+        },
+        {
+          "label": "Off Lazy Script",
+          "value": "off_lazy_script"
+        }
+      ],
+      "default": "off_lazy_script"
+    },
+    {
+      "type": "text",
+      "label": "Checksum",
+      "id": "checksum"
+    },
+    {
+      "type": "html",
+      "id": "ggJsjMxfnn6_successMessage",
+      "label": "ggJsjMxfnn6_successMessage",
+      "default": "Thanks for subscribing"
+    },
+    {
+      "type": "html",
+      "id": "ggJsjMxfnn6_errorMessage",
+      "label": "ggJsjMxfnn6_errorMessage",
+      "default": "Can’t send email. Please try again later."
+    },
+    {
+      "type": "html",
+      "id": "ggfJQxeCFrN_placeholder",
+      "label": "ggfJQxeCFrN_placeholder",
+      "default": "Email"
+    },
+    {
+      "type": "html",
+      "id": "gglGGHPJITX_label",
+      "label": "gglGGHPJITX_label",
+      "default": "Anmelden"
+    },
+    {
+      "type": "html",
+      "id": "gg31_2MTq7b_text",
+      "label": "gg31_2MTq7b_text",
+      "default": "\u003cp\u003e\u003cspan style=\"background-color:rgba(246,246,246,0);color:#F7F7F7;font-size:22px;\"\u003e\u003cstrong\u003eNewsletter abonnieren \u0026amp; Chanceauf 250 € Shopping-Budget sichern!\u003c/strong\u003e\u003c/span\u003e\u003c/p\u003e"
+    },
+    {
+      "type": "html",
+      "id": "ggorEsGq8ot_text",
+      "label": "ggorEsGq8ot_text",
+      "default": "\u003cp\u003e\u003cspan style=\"color:rgb(180,187,195);font-size:12px;\"\u003eAbmeldung jederzeit möglich. Hier sind unsere\u0026nbsp;\u003c/span\u003e\u003ca href=\"https://morenutrition.de/pages/datenschutzerklarung\"\u003e\u003cspan style=\"color:rgb(180,187,195);font-size:12px;\"\u003e\u003cu\u003eDatenschutzerklärung\u003c/u\u003e\u003c/span\u003e\u003c/a\u003e\u003cspan style=\"color:rgb(180,187,195);font-size:12px;\"\u003e und \u003c/span\u003e\u003ca href=\"https://morenutrition.de/pages/teilnahmebedingungen-newsletter-gewinnspiel\"\u003e\u003cspan style=\"color:rgb(180,187,195);font-size:12px;\"\u003e\u003cu\u003eTeilnahmebedingungen\u003c/u\u003e\u003c/span\u003e\u003c/a\u003e\u003cspan style=\"color:rgb(180,187,195);font-size:12px;\"\u003e\u003cu\u003e.\u003c/u\u003e\u003c/span\u003e\u003c/p\u003e"
+    }
+  ],
+  "tag": "section"
+}{% endschema %}
