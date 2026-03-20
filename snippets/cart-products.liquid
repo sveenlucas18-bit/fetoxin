@@ -65,7 +65,13 @@
             role="caption"
           >
             {{ 'content.cart_total' | t }}
-            <span>{{ cart.total_price | money_with_currency }}</span>
+            <span>
+              {%- if drawer_context == 'drawer' -%}
+                {{ cart.total_price | money_without_currency }} {{ cart.currency.symbol }}
+              {%- else -%}
+                {{ cart.total_price | money_with_currency }}
+              {%- endif -%}
+            </span>
           </caption>
 
           <thead
@@ -223,7 +229,7 @@
 
                   {% if item.line_level_discount_allocations.size > 0 %}
                     <ul
-                      class="list-unstyled"
+                      class="cart-items__discount-labels list-unstyled"
                       role="list"
                     >
                       {%- for discount in item.line_level_discount_allocations -%}
@@ -232,12 +238,12 @@
                     </ul>
                   {% endif %}
 
-                  <div>
+                  <div class="cart-items__unit-price">
                     {% if item.original_price != item.final_price %}
                       <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
-                      <span>{{ item.final_price | money }}</span>
+                      <span class="cart-items__unit-price--current">{{ item.final_price | money }}</span>
                       <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
-                      <s class="compare-at-price">
+                      <s class="cart-items__unit-price--compare compare-at-price">
                         {% if item.variant.compare_at_price > item.original_price %}
                           {{ item.variant.compare_at_price | money }}
                         {% else %}
@@ -251,11 +257,11 @@
                         <span class="visually-hidden">{{ 'content.price' | t }}</span>
                       {% endif %}
 
-                      <span>{{ item.original_price | money }}</span>
+                      <span class="cart-items__unit-price--current">{{ item.original_price | money }}</span>
 
                       {% if item.variant.compare_at_price > item.original_price %}
                         <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
-                        <s class="compare-at-price">{{ item.variant.compare_at_price | money }}</s>
+                        <s class="cart-items__unit-price--compare compare-at-price">{{ item.variant.compare_at_price | money }}</s>
                       {% endif %}
                     {% endif %}
                   </div>
@@ -325,15 +331,26 @@
                   headers="productTotal"
                 >
                   {%- liquid
-                    if settings.currency_code_enabled_cart_items
+                    if drawer_context == 'drawer'
+                      assign price = item.final_line_price | money_without_currency | append: ' ' | append: cart.currency.symbol
+                      assign unit_price = item.unit_price | money_without_currency | append: ' ' | append: cart.currency.symbol
+                      assign original_line_price = item.original_line_price | money_without_currency | append: ' ' | append: cart.currency.symbol
+                    elsif settings.currency_code_enabled_cart_items
                       assign price = item.final_line_price | money_with_currency
                       assign unit_price = item.unit_price | money_with_currency
+                      assign original_line_price = item.original_line_price | money_with_currency
                     else
                       assign price = item.final_line_price | money
                       assign unit_price = item.unit_price | money
+                      assign original_line_price = item.original_line_price | money
                     endif
                   -%}
-                  <text-component value="{{ price | strip_html }}">{{ price }}</text-component>
+                  <span class="cart-items__line-price">
+                    <span class="cart-items__line-price--current"><text-component value="{{ price | strip_html }}">{{ price }}</text-component></span>
+                    {% if item.original_line_price != item.final_line_price %}
+                      <s class="cart-items__line-price--compare">{{ original_line_price }}</s>
+                    {% endif %}
+                  </span>
                   {%- if item.unit_price_measurement -%}
                     <div class="cart-items__price-unit cart-secondary-typography">
                       {% render 'unit-price', price: unit_price, measurement: item.unit_price_measurement %}
@@ -373,14 +390,13 @@
   }
 
   .cart-items__table-row {
-    --cart-item-price-width: 6rem;
-
     display: grid;
-    grid-template-columns: clamp(2.5rem, 15cqi, 7.5rem) minmax(0, 1fr) minmax(var(--cart-item-price-width), auto);
+    grid-template-columns: clamp(2.5rem, 25cqi, 7.5rem) minmax(0, 1fr);
     grid-template-areas:
-      'media details price'
-      'media quantity price'
-      'media error error';
+      'media details'
+      'media price'
+      'media quantity'
+      'media error';
     column-gap: var(--gap-md);
     align-items: start;
     padding-bottom: var(--cart-items-gap);
@@ -457,8 +473,34 @@
 
   .cart-items__title {
     font-size: var(--cart-font-size--md);
-    color: var(--color-foreground);
+    font-weight: 700;
+    color: #000;
     text-transform: var(--product-title-case);
+  }
+
+  .cart-items__discount-labels {
+    display: none;
+  }
+
+  .cart-items__discount-labels li {
+    margin: 0;
+  }
+
+  .cart-items__unit-price {
+    display: none;
+  }
+
+  .cart-items__unit-price--current {
+    font-weight: 700;
+    color: #c00;
+    font-size: var(--cart-font-size--sm);
+  }
+
+  .cart-items__unit-price--compare,
+  .cart-items__unit-price .compare-at-price {
+    color: #333;
+    font-size: var(--cart-font-size--sm);
+    font-weight: 400;
   }
 
   .cart-items__variant {
@@ -489,18 +531,52 @@
 
   .cart-items__quantity .quantity-selector {
     display: inline-flex;
-    font-size: var(--cart-font-size--sm);
+    font-size: var(--cart-font-size--md);
     height: auto;
+    min-height: 44px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .cart-items__quantity .quantity-selector :is(.quantity-minus, .quantity-plus) {
+    width: 44px;
+    height: 44px;
+    color: #000;
+  }
+
+  .cart-items__quantity .quantity-selector svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2.5;
+  }
+
+  .cart-items__quantity .quantity-selector input[type='number'] {
+    font-size: 1rem;
+    font-weight: 600;
+    width: 40px;
+    color: #000;
+  }
+
+  .cart-items__quantity .quantity-selector-wrapper {
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 0;
   }
 
   .cart-items__remove {
     background-color: transparent;
-    color: var(--color-foreground);
-    width: var(--minimum-touch-target);
-    height: var(--minimum-touch-target);
+    color: #999;
+    width: 44px;
+    height: 44px;
     justify-content: center;
     box-shadow: none;
     padding: 0;
+  }
+
+  .cart-items__remove:hover {
+    color: #333;
   }
 
   .cart-items__media {
@@ -511,10 +587,31 @@
   .cart-items__price {
     grid-area: price;
     min-height: unset;
-    min-width: var(--cart-item-price-width);
-    text-align: end;
+    text-align: start;
     display: block;
     font-size: var(--cart-font-size--md);
+    margin-block-start: var(--margin-2xs);
+  }
+
+  .cart-items__line-price {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.35em;
+  }
+
+  .cart-items__line-price--current {
+    font-weight: 700;
+    color: #D11616;
+    font-size: var(--cart-font-size--md);
+  }
+
+  .cart-items__line-price--compare {
+    font-size: var(--cart-font-size--sm);
+    color: #000;
+    font-weight: 400;
   }
 
   .cart-items__price-unit {
@@ -527,6 +624,8 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    border-radius: 8px;
+    background-color: #f0f0f0;
   }
 
   .cart-items__media-image {
@@ -535,6 +634,7 @@
     object-position: center center;
     width: 100%;
     height: auto;
+    border-radius: 8px;
   }
 
   .cart-items__empty-button {
@@ -580,30 +680,16 @@
 
   @container cart-items (min-width: 720px) {
     .cart-items__table-row {
-      --cart-item-price-width: 6rem;
-
-      grid-template-columns: 7.5rem 1fr 1fr minmax(var(--cart-item-price-width), auto);
-      grid-template-rows: min-content 1fr;
+      grid-template-columns: 7.5rem minmax(0, 1fr);
       grid-template-areas:
-        'media details quantity price'
-        'media details error error';
-    }
-
-    .cart-items__quantity,
-    .cart-items__price {
-      grid-area: initial;
+        'media details'
+        'media price'
+        'media quantity'
+        'media error';
     }
 
     .cart-items__quantity {
       margin-top: 0;
-    }
-
-    .cart-items__price {
-      min-height: var(--minimum-touch-target);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: center;
     }
   }
 
@@ -663,6 +749,12 @@
     }
   }
 
+  .cart__total-value {
+    font-size: 20px;
+    font-weight: 700 !important;
+    color: #000;
+  }
+
   .cart-primary-typography {
     font-family: var(--cart-primary-font-family);
     font-style: var(--cart-primary-font-style);
@@ -675,29 +767,6 @@
     font-weight: var(--cart-secondary-font-weight);
   }
 
-  .cart__ctas {
-    width: 100%;
-    display: grid;
-    gap: var(--checkout-button-gap);
-    grid-auto-flow: row;
-    grid-template-columns: 1fr;
-  }
-
-  .cart__additional-checkout-buttons {
-    width: 100%;
-  }
-
-  .cart__ctas .cart__checkout-button {
-    width: 100%;
-    height: clamp(25px, var(--height-buy-buttons), 55px);
-    padding-inline: var(--padding-4xl);
-  }
-
-  shopify-accelerated-checkout-cart {
-    --shopify-accelerated-checkout-inline-alignment: center;
-    --shopify-accelerated-checkout-button-border-radius: var(--style-border-radius-buttons-primary);
-    --shopify-accelerated-checkout-row-gap: var(--checkout-button-gap, 10px);
-  }
 
   .cart-note {
     width: 100%;
