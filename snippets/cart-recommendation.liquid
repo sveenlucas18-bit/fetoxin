@@ -1,0 +1,327 @@
+{%- doc -%}
+  Renders a single related-product card inside the cart drawer.
+  Uses Shopify product recommendations for the first cart item.
+  Falls back gracefully when no recommendation is available.
+{%- enddoc -%}
+
+{%- if settings.cart_drawer_recommendation_enabled and cart.item_count > 0 -%}
+  {%- assign rec_product = nil -%}
+  {%- assign source_product = cart.items.first.product -%}
+
+  {%- if source_product -%}
+    {%- assign rec_candidates = source_product.collections.first.products -%}
+    {%- assign cart_product_ids = '' -%}
+    {%- for item in cart.items -%}
+      {%- assign cart_product_ids = cart_product_ids | append: item.product.id | append: ',' -%}
+    {%- endfor -%}
+
+    {%- for p in rec_candidates limit: 10 -%}
+      {%- assign p_id_str = p.id | append: '' -%}
+      {%- unless cart_product_ids contains p_id_str -%}
+        {%- if p.available -%}
+          {%- assign rec_product = p -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endunless -%}
+    {%- endfor -%}
+  {%- endif -%}
+
+  {%- if rec_product -%}
+    {%- assign rec_variant = rec_product.selected_or_first_available_variant -%}
+    {%- assign btn_bg = settings.cart_drawer_recommendation_btn_bg | default: '#C8E6EC' -%}
+    {%- assign btn_text = settings.cart_drawer_recommendation_btn_text | default: '#333333' -%}
+    {%- assign heading_text = settings.cart_drawer_recommendation_heading | default: 'Kunden kauften auch' -%}
+
+    <div class="cart-rec" data-cart-recommendation>
+      {%- if heading_text != blank -%}
+        <p class="cart-rec__heading">{{ heading_text }}</p>
+      {%- endif -%}
+
+      <div class="cart-rec__card">
+        <a href="{{ rec_product.url }}" class="cart-rec__image-link" aria-label="{{ rec_product.title | escape }}">
+          {%- if rec_product.featured_image -%}
+            <img
+              src="{{ rec_product.featured_image | image_url: width: 200 }}"
+              alt="{{ rec_product.featured_image.alt | default: rec_product.title | escape }}"
+              width="100"
+              height="100"
+              loading="lazy"
+              class="cart-rec__image"
+            >
+          {%- else -%}
+            <div class="cart-rec__image cart-rec__image--placeholder">
+              {{ 'product-1' | placeholder_svg_tag }}
+            </div>
+          {%- endif -%}
+        </a>
+
+        <div class="cart-rec__info">
+          <a href="{{ rec_product.url }}" class="cart-rec__title">
+            {{ rec_product.title }}
+          </a>
+
+          <div class="cart-rec__price-row">
+            <span class="cart-rec__price">{{ rec_variant.price | money }}</span>
+
+            <button
+              type="button"
+              class="cart-rec__atc-btn"
+              data-variant-id="{{ rec_variant.id }}"
+              aria-label="{{ 'actions.add_to_cart' | t }}: {{ rec_product.title | escape }}"
+              style="--rec-btn-bg: {{ btn_bg }}; --rec-btn-text: {{ btn_text }};"
+            >
+              {%- if settings.cart_drawer_recommendation_btn_image != blank -%}
+                <img
+                  src="{{ settings.cart_drawer_recommendation_btn_image | image_url: width: 48 }}"
+                  alt=""
+                  width="24"
+                  height="24"
+                  class="cart-rec__atc-icon-img"
+                >
+              {%- else -%}
+                <svg class="cart-rec__atc-icon-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+              {%- endif -%}
+              <span class="cart-rec__atc-spinner" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="31.4 31.4" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" dur=".7s" from="0 12 12" to="360 12 12" repeatCount="indefinite"/></circle></svg>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function() {
+        if (window.__cartRecBound) return;
+        window.__cartRecBound = true;
+
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('.cart-rec__atc-btn');
+          if (!btn || btn.classList.contains('is-loading')) return;
+          e.preventDefault();
+
+          var variantId = btn.getAttribute('data-variant-id');
+          if (!variantId) return;
+
+          btn.classList.add('is-loading');
+          btn.disabled = true;
+
+          var sectionEl = btn.closest('cart-items-component');
+          var sectionId = sectionEl ? sectionEl.getAttribute('data-section-id') : null;
+          var sectionsParam = sectionId ? '&sections=' + sectionId : '';
+
+          fetch(window.Shopify.routes.root + 'cart/add.js' + '?sections=' + (sectionId || ''), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({ items: [{ id: parseInt(variantId, 10), quantity: 1 }] })
+          })
+          .then(function(res) {
+            if (!res.ok) throw new Error('Add to cart failed');
+            return res.json();
+          })
+          .then(function(addResponse) {
+            return fetch(window.Shopify.routes.root + 'cart.js', {
+              headers: { 'Accept': 'application/json' }
+            })
+            .then(function(r) { return r.json(); })
+            .then(function(cartData) {
+              /* Dispatch cart:update so the theme bubble icon updates */
+              document.dispatchEvent(new CustomEvent('cart:update', {
+                bubbles: true,
+                detail: {
+                  data: {
+                    itemCount: cartData.item_count,
+                    source: 'cart-recommendation'
+                  }
+                }
+              }));
+
+              /* Refresh the cart drawer via section rendering */
+              if (sectionId && addResponse.sections && addResponse.sections[sectionId]) {
+                var tmp = document.createElement('div');
+                tmp.innerHTML = addResponse.sections[sectionId];
+                var newContent = tmp.querySelector('cart-items-component');
+                var oldContent = document.querySelector('cart-items-component[data-section-id="' + sectionId + '"]');
+                if (newContent && oldContent) {
+                  oldContent.innerHTML = newContent.innerHTML;
+                }
+              } else if (sectionId) {
+                fetch('/?sections=' + sectionId)
+                  .then(function(r) { return r.json(); })
+                  .then(function(sections) {
+                    var html = sections[sectionId];
+                    if (!html) return;
+                    var tmp = document.createElement('div');
+                    tmp.innerHTML = html;
+                    var newContent = tmp.querySelector('cart-items-component');
+                    var oldContent = document.querySelector('cart-items-component[data-section-id="' + sectionId + '"]');
+                    if (newContent && oldContent) {
+                      oldContent.innerHTML = newContent.innerHTML;
+                    }
+                  });
+              }
+            });
+          })
+          .catch(function() {
+            btn.classList.remove('is-loading');
+            btn.disabled = false;
+          });
+        });
+      })();
+    </script>
+  {%- endif -%}
+{%- endif -%}
+
+{% stylesheet %}
+  .cart-rec {
+    padding-block: var(--padding-lg);
+    border-top: 1px solid var(--color-border);
+    padding-top: 97px;
+  }
+
+  .cart-rec__heading {
+    font-weight: 700;
+    font-size: var(--cart-font-size--md, 1rem);
+    margin: 0 0 12px 0;
+    color: var(--color-foreground);
+  }
+
+  .cart-rec__card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  }
+
+  .cart-rec__image-link {
+    flex-shrink: 0;
+    width: 90px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-rec__image {
+    max-width: 90px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .cart-rec__info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cart-rec__title {
+    font-weight: 600;
+    font-size: var(--cart-font-size--sm, 0.875rem);
+    color: var(--color-foreground);
+    text-decoration: none;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .cart-rec__title:hover {
+    text-decoration: underline;
+  }
+
+  .cart-rec__price-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #DAEFF0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .cart-rec__price {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-foreground);
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+  }
+
+  .cart-rec__atc-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    height: 43px;
+    flex-shrink: 0;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: var(--rec-btn-bg, #C8E6EC);
+    color: var(--rec-btn-text, #333);
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+    padding: 0 12px;
+  }
+
+  .cart-rec__atc-btn:hover:not(:disabled) {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+
+  .cart-rec__atc-btn:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .cart-rec__atc-btn:disabled {
+    cursor: default;
+  }
+
+  .cart-rec__atc-icon-img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    pointer-events: none;
+  }
+
+  .cart-rec__atc-icon-svg {
+    pointer-events: none;
+  }
+
+  .cart-rec__atc-spinner {
+    display: none;
+    position: absolute;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .cart-rec__atc-btn.is-loading .cart-rec__atc-icon-img,
+  .cart-rec__atc-btn.is-loading .cart-rec__atc-icon-svg {
+    visibility: hidden;
+  }
+
+  .cart-rec__atc-btn.is-loading .cart-rec__atc-spinner {
+    display: flex;
+  }
+
+  .cart-rec__atc-btn.is-success {
+    background-color: #4caf50;
+    color: #fff;
+  }
+{% endstylesheet %}
