@@ -176,13 +176,47 @@
                 <scroll-hint
                   class="cart-drawer__items"
                 >
+                  {% if settings.show_add_discount_code %}
+                    {% render 'cart-discount-block', section_id: section.id, wrapper_class: 'cart-drawer__discount-panel' %}
+                  {% endif %}
+                  {% if settings.cart_drawer_delivery_text != blank %}
+                    <div class="cart-drawer__delivery-banner" role="status">
+                      {% if settings.cart_drawer_delivery_icon != blank %}
+                        <img
+                          src="{{ settings.cart_drawer_delivery_icon | image_url: width: 48 }}"
+                          alt=""
+                          class="cart-drawer__delivery-banner-icon"
+                          width="24"
+                          height="24"
+                          loading="lazy"
+                        >
+                      {% else %}
+                        <span class="cart-drawer__delivery-banner-icon cart-drawer__delivery-banner-icon--svg" aria-hidden="true">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18h2"/><path d="M19 18h2v-3a2 2 0 0 0-2-2h-1"/><path d="M14 9h2"/><path d="M14 12h4"/></svg>
+                        </span>
+                      {% endif %}
+                      <span class="cart-drawer__delivery-banner-text">
+                        {% assign parts = settings.cart_drawer_delivery_text | split: '**' %}
+                        {% for part in parts %}
+                          {% assign part_index = forloop.index0 | modulo: 2 %}
+                          {% if part_index == 1 %}
+                            <strong>{{ part }}</strong>
+                          {% else %}
+                            {{ part }}
+                          {% endif %}
+                        {% endfor %}
+                      </span>
+                    </div>
+                  {% endif %}
                   {% render 'cart-products', drawer_context: 'drawer' %}
+
+                  {% render 'cart-recommendation' %}
                 </scroll-hint>
 
                 <div
                   class="cart-drawer__summary"
                 >
-                  {% render 'cart-summary' %}
+                  {% render 'cart-summary', drawer_context: 'drawer' %}
                 </div>
               </scroll-hint>
             {%- endif -%}
@@ -390,6 +424,12 @@
     background-color: var(--color-background);
     flex-grow: 1;
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .cart-drawer__content::-webkit-scrollbar {
+    display: none;
   }
 
   .cart-drawer__heading {
@@ -434,6 +474,53 @@
 
   .cart-drawer__items .cart-items__table-row:last-child {
     border-bottom: none;
+  }
+
+  .cart-drawer__discount-panel {
+    width: 100%;
+    margin-block-end: var(--padding-md);
+  }
+
+  .cart-drawer__delivery-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--padding-sm);
+    width: 100%;
+    padding: var(--padding-sm) var(--padding-md);
+    margin-bottom: var(--padding-md);
+    background-color: #DCF2CE;
+    border-radius: 5px;
+    color: #2d5a27;
+    font-size: var(--cart-font-size--sm, 0.875rem);
+    line-height: 1.3;
+  }
+
+  .cart-drawer__delivery-banner-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+  }
+
+  .cart-drawer__delivery-banner-icon--svg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2d5a27;
+  }
+
+  .cart-drawer__delivery-banner-icon--svg svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cart-drawer__delivery-banner-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cart-drawer__delivery-banner-text strong {
+    font-weight: 700;
   }
 
   .cart-drawer__summary {
@@ -495,10 +582,16 @@
     flex-direction: column;
     padding-inline: var(--cart-drawer-padding);
     overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 
     @media screen and (min-width: 750px) {
       padding-inline: var(--cart-drawer-padding-desktop);
     }
+  }
+
+  .cart-drawer__items::-webkit-scrollbar {
+    display: none;
   }
 
   .cart-drawer__items .cart-items__table-row {
