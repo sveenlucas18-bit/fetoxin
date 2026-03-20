@@ -1763,10 +1763,91 @@
         "default": true
       },
       {
+        "type": "image_picker",
+        "id": "cart_drawer_checkout_image",
+        "label": "Cart drawer image below checkout",
+        "info": "Displayed below the checkout button in the cart drawer (e.g. payment method icons)."
+      },
+      {
+        "type": "header",
+        "content": "Cart drawer trust badges"
+      },
+      {
+        "type": "text",
+        "id": "cart_drawer_badge_text_1",
+        "label": "Badge 1 text",
+        "default": "30 Tage Geld-zurück-Garantie"
+      },
+      {
+        "type": "text",
+        "id": "cart_drawer_badge_text_2",
+        "label": "Badge 2 text",
+        "default": "Kostenloser Versand"
+      },
+      {
         "type": "url",
         "id": "empty_cart_button_link",
         "label": "t:settings.empty_cart_button_link",
         "default": "/collections/all"
+      },
+      {
+        "type": "header",
+        "content": "Cart drawer – Related product",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_drawer_recommendation_enabled",
+        "label": "Show a related product",
+        "default": true,
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "text",
+        "id": "cart_drawer_recommendation_heading",
+        "label": "Heading",
+        "default": "Kunden kauften auch",
+        "visible_if": "{{ settings.cart_drawer_recommendation_enabled }}"
+      },
+      {
+        "type": "color",
+        "id": "cart_drawer_recommendation_btn_bg",
+        "label": "Add-to-cart button background",
+        "default": "#C8E6EC",
+        "visible_if": "{{ settings.cart_drawer_recommendation_enabled }}"
+      },
+      {
+        "type": "color",
+        "id": "cart_drawer_recommendation_btn_text",
+        "label": "Add-to-cart button icon / text color",
+        "default": "#333333",
+        "visible_if": "{{ settings.cart_drawer_recommendation_enabled }}"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_drawer_recommendation_btn_image",
+        "label": "Add-to-cart button icon image",
+        "info": "Optional. Replaces the default cart icon on the button (recommended: 24×24 px, transparent PNG or SVG).",
+        "visible_if": "{{ settings.cart_drawer_recommendation_enabled }}"
+      },
+      {
+        "type": "header",
+        "content": "Cart drawer delivery banner",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_drawer_delivery_icon",
+        "label": "Delivery banner icon",
+        "info": "Optional. e.g. delivery truck. Shown on the left of the banner.",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
+      },
+      {
+        "type": "text",
+        "id": "cart_drawer_delivery_text",
+        "label": "Delivery banner text",
+        "info": "Leave empty to hide the banner. Use **text** for bold, e.g. Kostenfreie Lieferung am **Feb 15 - Feb 18**",
+        "visible_if": "{{ settings.cart_type == 'drawer' }}"
       },
       {
         "type": "header",
