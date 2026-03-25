@@ -84,6 +84,52 @@
           {{- 'icon-close.svg' | inline_asset_content -}}
         </span>
       </button>
+      {% if data_header_drawer_type == 'mobile-drawer' and block_settings.mobile_menu_top_image != blank %}
+        {% capture mobile_menu_top_image_markup %}
+          <img
+            src="{{ block_settings.mobile_menu_top_image | image_url: width: 900 }}"
+            alt="{{ block_settings.mobile_menu_top_image.alt | escape }}"
+            loading="lazy"
+            width="{{ block_settings.mobile_menu_top_image.width }}"
+            height="{{ block_settings.mobile_menu_top_image.height }}"
+            class="menu-drawer__top-image"
+          >
+        {% endcapture %}
+        <div class="menu-drawer__top-image-wrapper menu-drawer__animated-element">
+          {% if block_settings.mobile_menu_top_image_link != blank %}
+            <a
+              href="{{ block_settings.mobile_menu_top_image_link }}"
+              class="menu-drawer__top-image-link"
+            >
+              {{ mobile_menu_top_image_markup }}
+            </a>
+          {% else %}
+            {{ mobile_menu_top_image_markup }}
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if data_header_drawer_type == 'mobile-drawer' and block_settings.mobile_menu_bestseller_product != blank %}
+        <div class="menu-drawer__bestseller menu-drawer__animated-element">
+          {% if block_settings.mobile_menu_bestseller_title != blank %}
+            <h3 class="menu-drawer__bestseller-title">
+              {{ block_settings.mobile_menu_bestseller_title | escape }}
+            </h3>
+          {% endif %}
+          {% assign bestseller_product = block_settings.mobile_menu_bestseller_product %}
+          {% if bestseller_product.featured_image != blank %}
+            <a href="{{ bestseller_product.url }}" class="menu-drawer__bestseller-link">
+              <img
+                src="{{ bestseller_product.featured_image | image_url: width: 240 }}"
+                alt="{{ bestseller_product.featured_image.alt | default: bestseller_product.title | escape }}"
+                loading="lazy"
+                width="{{ bestseller_product.featured_image.width }}"
+                height="{{ bestseller_product.featured_image.height }}"
+                class="menu-drawer__bestseller-image"
+              >
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
       <nav
         class="menu-drawer__navigation"
         style="
@@ -103,6 +149,7 @@
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
               {% assign animation_index = animation_index | plus: 1 %}
+              {% assign link_title_downcase = link.title | strip | downcase %}
               <li
                 style="--menu-drawer-animation-index: {{ animation_index }};"
                 class="{%- if block_settings.drawer_accordion -%}menu-drawer__list-item--deep{%- else -%}menu-drawer__list-item--flat{%- endif -%}{% if block_settings.drawer_dividers %} menu-drawer__list-item--divider{% endif %}"
@@ -126,7 +173,12 @@
                         id="HeaderDrawer-{{ link.handle }}"
                         class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
                       >
-                        <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                        <span class="menu-drawer__menu-item-text wrap-text{% if link_title_downcase == 'sale' %} menu-drawer__menu-item-text--sale{% endif %}">{{ link.title | escape }}</span>
+                        {% if link_title_downcase == 'sale' %}
+                          <span class="svg-wrapper menu-drawer__sale-icon">
+                            {{- 'icon-discount.svg' | inline_asset_content -}}
+                          </span>
+                        {% endif %}
                         <span class="svg-wrapper icon-plus">
                           {{- 'icon-plus.svg' | inline_asset_content -}}
                         </span>
@@ -186,7 +238,12 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text{% if link_title_downcase == 'sale' %} menu-drawer__menu-item-text--sale{% endif %}">{{ link.title | escape }}</span>
+                    {% if link_title_downcase == 'sale' %}
+                      <span class="svg-wrapper menu-drawer__sale-icon">
+                        {{- 'icon-discount.svg' | inline_asset_content -}}
+                      </span>
+                    {% endif %}
                   </a>
                   {% liquid
                     assign render_link_image = false
@@ -237,7 +294,12 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text{% if link_title_downcase == 'sale' %} menu-drawer__menu-item-text--sale{% endif %}">{{ link.title | escape }}</span>
+                    {% if link_title_downcase == 'sale' %}
+                      <span class="svg-wrapper menu-drawer__sale-icon">
+                        {{- 'icon-discount.svg' | inline_asset_content -}}
+                      </span>
+                    {% endif %}
                   </a>
                 {% endif %}
               </li>
@@ -249,6 +311,7 @@
             {% assign animation_index = 0 %}
             {%- for link in linklist.links -%}
               {% assign animation_index = animation_index | plus: 1 %}
+              {% assign link_title_downcase = link.title | strip | downcase %}
               <li
                 class="menu-drawer__list-item"
                 style="--menu-drawer-animation-index: {{ animation_index }};"
@@ -266,7 +329,12 @@
                       class="menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}"
                       on:click="header-drawer/open"
                     >
-                      <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                      <span class="menu-drawer__menu-item-text wrap-text{% if link_title_downcase == 'sale' %} menu-drawer__menu-item-text--sale{% endif %}">{{ link.title | escape }}</span>
+                      {% if link_title_downcase == 'sale' %}
+                        <span class="svg-wrapper menu-drawer__sale-icon">
+                          {{- 'icon-discount.svg' | inline_asset_content -}}
+                        </span>
+                      {% endif %}
                       <span class="svg-wrapper icon-caret icon-caret--forward">
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </span>
@@ -551,7 +619,12 @@
                       aria-current="page"
                     {% endif %}
                   >
-                    <span class="menu-drawer__menu-item-text wrap-text">{{ link.title | escape }}</span>
+                    <span class="menu-drawer__menu-item-text wrap-text{% if link_title_downcase == 'sale' %} menu-drawer__menu-item-text--sale{% endif %}">{{ link.title | escape }}</span>
+                    {% if link_title_downcase == 'sale' %}
+                      <span class="svg-wrapper menu-drawer__sale-icon">
+                        {{- 'icon-discount.svg' | inline_asset_content -}}
+                      </span>
+                    {% endif %}
                   </a>
                 {%- endif -%}
               </li>
@@ -690,57 +763,90 @@
         {%- endif -%}
       </div>
 
-      {% liquid
-        if block_settings.menu_style == 'featured_collections'
-          assign top_level_featured_collections = linklist.links | where: 'type', 'collection_link'
-        endif
+      {% if data_header_drawer_type != 'mobile-drawer' %}
+        {% liquid
+          if block_settings.menu_style == 'featured_collections'
+            assign top_level_featured_collections = linklist.links | where: 'type', 'collection_link'
+          endif
 
-        if eager_loading and block_settings.menu_style == 'featured_products'
-          for link in linklist.links
-            if link.type == 'collection_link'
-              assign collection_linklist = link
-              assign top_level_featured_products_collection = collection_linklist.object
-              break
-            elsif link.type == 'catalog_link' or link.type == 'collections_link'
-              assign top_level_featured_products_collection = collections.all
-              break
-            endif
-          endfor
-        endif
-      -%}
-      {% if top_level_featured_collections.size > 0 or top_level_featured_products_collection.products_count > 0 %}
-        <div
-          class="menu-drawer__featured-content"
-          style="--menu-drawer-animation-index: {{ linklist.links.size | plus: 1 }};"
-        >
-          <ul class="menu-drawer__featured-content-list menu-drawer__animated-element list-unstyled">
-            {% if top_level_featured_collections.size > 0 %}
-              {%- for collection in top_level_featured_collections limit: max_featured_items -%}
-                <li class="menu-drawer__featured-content-list-item menu-drawer__featured-content-list-item--collection">
-                  {% render 'resource-card',
-                    resource: collection.object,
-                    resource_type: 'collection',
-                    style: 'overlay',
-                    image_aspect_ratio: ratio,
-                    image_sizes: 'auto, 400px'
-                  %}
-                </li>
-              {%- endfor -%}
-            {% elsif top_level_featured_products_collection.products_count > 0 %}
-              {% paginate top_level_featured_products_collection.products by max_featured_items %}
-                {%- for product in top_level_featured_products_collection.products limit: max_featured_items -%}
-                  <li class="menu-drawer__featured-content-list-item menu-drawer__featured-content-list-item--product">
+          if eager_loading and block_settings.menu_style == 'featured_products'
+            for link in linklist.links
+              if link.type == 'collection_link'
+                assign collection_linklist = link
+                assign top_level_featured_products_collection = collection_linklist.object
+                break
+              elsif link.type == 'catalog_link' or link.type == 'collections_link'
+                assign top_level_featured_products_collection = collections.all
+                break
+              endif
+            endfor
+          endif
+        -%}
+        {% if top_level_featured_collections.size > 0 or top_level_featured_products_collection.products_count > 0 %}
+          <div
+            class="menu-drawer__featured-content"
+            style="--menu-drawer-animation-index: {{ linklist.links.size | plus: 1 }};"
+          >
+            <ul class="menu-drawer__featured-content-list menu-drawer__animated-element list-unstyled">
+              {% if top_level_featured_collections.size > 0 %}
+                {%- for collection in top_level_featured_collections limit: max_featured_items -%}
+                  <li class="menu-drawer__featured-content-list-item menu-drawer__featured-content-list-item--collection">
                     {% render 'resource-card',
-                      resource: product,
-                      resource_type: 'product',
+                      resource: collection.object,
+                      resource_type: 'collection',
+                      style: 'overlay',
                       image_aspect_ratio: ratio,
                       image_sizes: 'auto, 400px'
                     %}
                   </li>
                 {%- endfor -%}
-              {% endpaginate %}
+              {% elsif top_level_featured_products_collection.products_count > 0 %}
+                {% paginate top_level_featured_products_collection.products by max_featured_items %}
+                  {%- for product in top_level_featured_products_collection.products limit: max_featured_items -%}
+                    <li class="menu-drawer__featured-content-list-item menu-drawer__featured-content-list-item--product">
+                      {% render 'resource-card',
+                        resource: product,
+                        resource_type: 'product',
+                        image_aspect_ratio: ratio,
+                        image_sizes: 'auto, 400px'
+                      %}
+                    </li>
+                  {%- endfor -%}
+                {% endpaginate %}
+              {% endif %}
+            </ul>
+          </div>
+        {% endif %}
+      {% endif %}
+
+      {% if data_header_drawer_type == 'mobile-drawer' %}
+        <div class="menu-drawer__footer-links menu-drawer__animated-element" style="--menu-drawer-animation-index: {{ linklist.links.size | plus: 1 }};">
+          {% liquid
+            assign account_link_label = block_settings.mobile_menu_footer_link_1_label | default: 'Login'
+            assign account_link_url = routes.account_login_url
+            if customer
+              assign account_link_url = routes.account_url
+              assign account_link_label = customer.first_name | default: customer.email
+            endif
+          %}
+          <a href="{{ account_link_url }}" class="menu-drawer__footer-link">
+            {{ account_link_label | escape }}
+            {% if block_settings.mobile_menu_footer_link_1_icon_image != blank %}
+              <img
+                src="{{ block_settings.mobile_menu_footer_link_1_icon_image | image_url: width: 64 }}"
+                alt="{{ block_settings.mobile_menu_footer_link_1_icon_image.alt | default: account_link_label | escape }}"
+                class="menu-drawer__footer-link-icon"
+                width="24"
+                height="24"
+                loading="lazy"
+              >
             {% endif %}
-          </ul>
+          </a>
+          {% if block_settings.mobile_menu_footer_link_2_label != blank %}
+            <a href="{{ block_settings.mobile_menu_footer_link_2_url | default: '#' }}" class="menu-drawer__footer-link">
+              {{ block_settings.mobile_menu_footer_link_2_label | escape }}
+            </a>
+          {% endif %}
         </div>
       {% endif %}
     </div>
@@ -796,6 +902,76 @@
     @media screen and (min-width: 750px) {
       margin-top: var(--drawer-header-desktop-top);
     }
+  }
+
+  .menu-drawer__top-image-wrapper {
+    padding: 0 var(--drawer-padding) var(--padding-sm);
+  }
+
+  .menu-drawer__top-image-link {
+    display: block;
+    text-decoration: none;
+    line-height: 0;
+  }
+
+  .menu-drawer__top-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--menu-image-border-radius);
+  }
+
+  .menu-drawer__bestseller {
+    padding: 0 var(--drawer-padding) var(--padding-lg);
+  }
+
+  .menu-drawer__bestseller-title {
+    margin: 0 0 var(--padding-sm);
+    font-size: var(--font-size--2xl);
+    line-height: 1.2;
+  }
+
+  .menu-drawer__bestseller-link {
+    display: inline-flex;
+    text-decoration: none;
+    line-height: 0;
+  }
+
+  .menu-drawer__bestseller-image {
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #d91f26;
+  }
+
+  .menu-drawer__footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-xs);
+    padding: var(--padding-md) var(--drawer-padding) var(--padding-lg);
+    margin-top: auto;
+  }
+
+  .menu-drawer__footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: var(--font-size--base);
+    color: var(--color-foreground);
+    text-decoration: none;
+    line-height: 1.4;
+  }
+
+  .menu-drawer__footer-link:hover {
+    text-decoration: underline;
+  }
+
+  .menu-drawer__footer-link-icon {
+    width: 1.4rem;
+    height: 1.4rem;
+    object-fit: contain;
+    flex-shrink: 0;
   }
 
   details:not(.menu-open) .header__icon--menu .header-drawer-icon--close {
@@ -1084,7 +1260,7 @@
     padding: var(--padding-2xs) 0;
     position: relative;
     text-decoration: none;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -1157,6 +1333,27 @@
     text-overflow: ellipsis;
   }
 
+  .menu-drawer__menu-item-text--sale {
+    color: #d91f26;
+    font-weight: 700;
+  }
+
+  .menu-drawer__menu-item > .menu-drawer__sale-icon {
+    width: 1.25em;
+    height: 1.25em;
+    margin-inline-start: 0.3em;
+    margin-inline-end: auto;
+    padding: 0;
+    color: #d91f26;
+    flex-shrink: 0;
+  }
+
+  .menu-drawer__sale-icon svg {
+    --icon-stroke-width: 2.4;
+    width: 100%;
+    height: 100%;
+  }
+
   /** Styles when the country selector is hidden */
   .menu-drawer .language-selector:not(.menu-drawer__submenu *) {
     width: fit-content;
@@ -1171,8 +1368,7 @@
     width: fit-content;
     height: fit-content;
     margin: 0;
-    padding-block: var(--padding-lg);
-    padding-inline-start: var(--padding-xl);
+    padding-left: 6px;
     flex-shrink: 0;
   }
 
@@ -1181,8 +1377,8 @@
   }
 
   .menu-drawer svg {
-    width: var(--icon-size-xs);
-    height: var(--icon-size-xs);
+    width: 100%;
+    height: 30px;
   }
 
   .menu-drawer__submenu {
