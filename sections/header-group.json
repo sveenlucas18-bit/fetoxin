@@ -40,11 +40,20 @@
             "featured_products_aspect_ratio": "4 / 5",
             "featured_collections_aspect_ratio": "16 / 9",
             "image_border_radius": 0,
+            "mobile_menu_top_image": "shopify://shop_images/banner-fetoxin_1_9aadd181-6b70-44b7-beba-1908cfd644cd.png",
+            "mobile_menu_top_image_link": "shopify://products/fetoxin-activity-kapseln-30-caps",
+            "mobile_menu_bestseller_title": "Bestseller",
+            "mobile_menu_bestseller_product": "fetoxin-activity-kapseln-30-caps",
             "navigation_bar": false,
             "color_scheme_navigation_bar": "",
             "drawer_accordion": false,
             "drawer_accordion_expand_first": false,
-            "drawer_dividers": false
+            "drawer_dividers": false,
+            "mobile_menu_footer_link_1_label": "Login",
+            "mobile_menu_footer_link_1_url": "",
+            "mobile_menu_footer_link_1_icon_image": "shopify://shop_images/account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24_1_e5c859b2-987c-4192-be98-d4ee44c35d6c.svg",
+            "mobile_menu_footer_link_2_label": "Impressum",
+            "mobile_menu_footer_link_2_url": ""
           },
           "blocks": {}
         }
