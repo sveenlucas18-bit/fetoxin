@@ -349,10 +349,16 @@
     border-radius: 50%;
     background-color: #76c8d5;
     color: #fff;
-    padding: 0;
+    padding: 3px 3px 3px 3px;
     border: none;
-    cursor: pointer;
+    cursor: pointer !important;
     transition: background-color 0.15s ease;
+  }
+
+  .cart-discount__pill-remove,
+  .cart-discount__pill-remove * {
+    pointer-events: auto;
+    cursor: pointer !important;
   }
 
   .cart-discount__pill-remove:hover {

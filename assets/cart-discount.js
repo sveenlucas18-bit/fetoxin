@@ -125,16 +125,14 @@ class CartDiscount extends Component {
     event.preventDefault();
     event.stopPropagation();
 
-    if (
-      (event instanceof KeyboardEvent && event.key !== 'Enter') ||
-      !(event instanceof MouseEvent) ||
-      !(event.target instanceof HTMLElement) ||
-      typeof this.dataset.sectionId !== 'string'
-    ) {
-      return;
-    }
+    if (event instanceof KeyboardEvent && event.key !== 'Enter') return;
+    if (typeof this.dataset.sectionId !== 'string') return;
 
-    const pill = event.target.closest('.cart-discount__pill');
+    const target = event.target;
+    const pill =
+      target instanceof Element
+        ? target.closest('.cart-discount__pill')
+        : this.querySelector('.cart-discount__pill');
     if (!(pill instanceof HTMLLIElement)) return;
 
     const discountCode = pill.dataset.discountCode;
