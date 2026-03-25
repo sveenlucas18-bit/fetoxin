@@ -23,24 +23,6 @@
         "ggWP68VrDJf_text": "Zink für wichtige Körperfunktionen"
       }
     },
-    "gp_shopify_original_global_section_606289208251777591-2": {
-      "type": "gp-global-section-606289208251777591",
-      "settings": {
-        "section_preload": "false",
-        "checksum": "",
-        "ggeTY4QTbj7_text": "<a href=\"#\">Home</a>",
-        "ggPRbRQnGV8_text": "<a href=\"#\">Produkte</a>",
-        "ggBY3wrmroT_text": "<a href=\"#\">Versand</a>",
-        "ggb-xhtcMH7_text": "<a href=\"#\">Widerrufsbelehrung</a>",
-        "ggvNC-5Buht_text": "<a href=\"#\">Allgemeine Geschäftsbedingungen</a>",
-        "ggdHsP6WCqw_text": "<a href=\"#\">Wissenswertes</a>",
-        "gg3Im1YPiXV_text": "<a href=\"#\">Impressum</a>",
-        "gg0w-0A6RY4_text": "<a href=\"#\">Kontakt</a>",
-        "ggDHJWAW9Gy_text": "Zahlungsarten",
-        "ggejSiWmhTH_text": "Versand",
-        "ggE15oDDq8P_text": "Bekannt aus"
-      }
-    },
     "gp_shopify_original_section_603087270773261087": {
       "type": "gp-section-603087270773261087",
       "settings": {
@@ -484,7 +466,6 @@
     "gp_shopify_original_section_611239289509905261",
     "gp_shopify_original_section_606000209331880534",
     "gp_shopify_original_section_612201032209924627",
-    "gp_shopify_original_global_section_605997850370769818-1",
-    "gp_shopify_original_global_section_606289208251777591-2"
+    "gp_shopify_original_global_section_605997850370769818-1"
   ]
 }

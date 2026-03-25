@@ -1,0 +1,68 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_section_612205652302889837": {
+      "settings": {
+        "checksum": "058eff742714e90d6f00c37a16add616716c5e08636e6d061bf40049ebbbddd2_1_1_1_0__1",
+        "gghT4Xtt9sy_text": "Kontakt",
+        "section_preload": "true"
+      },
+      "type": "gp-section-612205652302889837"
+    },
+    "gp_section_612205653108195859": {
+      "settings": {
+        "checksum": "dbdac0d4c9ad71b6655996c8411056afa5c3d5ce7597ec45918ab943c7346ced_1_1_1_0__1",
+        "gg02KwYMbwU_text": "<p>Füllen Sie das Kontaktformular aus und unser Team meldet sich in Kürze bei Ihnen.</p>",
+        "ggB9YIDePvI_placeholder": "Nachricht",
+        "ggI4nKTR6FJ_placeholder": "Bestellnummer",
+        "ggRpgBGvR7P_placeholder": "Name",
+        "ggSdHZcu1jp_label": "Senden",
+        "ggTaiJ0FXKU_text": "Wie können wir Ihnen helfen?",
+        "ggWa6HdQCdb_placeholder": "E-Mail",
+        "section_preload": "true"
+      },
+      "type": "gp-section-612205653108195859"
+    },
+    "gp_section_612205654702031725": {
+      "settings": {
+        "checksum": "a8e8df4bcd85e57a23a462a1a253def7b59ae25632951f8580fde8d93dc0e0e6_1_1_1_0__1",
+        "gg3cWR-BBy6_text": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(51,51,51);font-size:15px;\">Sollte ein Produkt beschädigt bei Ihnen ankommen oder einen Mangel aufweisen, kontaktieren Sie bitte umgehend unseren Kundenservice. Wir kümmern uns schnellstmöglich um Ersatz oder eine Rückerstattung.</span></p><p><br>&nbsp;</p>",
+        "ggO7OEjPYHW_childItem_0": "<p>Wie kann ich meine Bestellung zurücksenden?</p>",
+        "ggRIjcOJJGe_text": "<p><span style=\"background-color:rgb(255,255,255);color:rgb(51,51,51);font-size:15px;\">Die Geld-zurück-Garantie kann für all unsere Produkte innerhalb von 30 Tagen nach Erhalt der Ware in Anspruch genommen werden. Fordern Sie hierzu ganz einfach eine Genehmigung für die Warenrückgabe von unserem Kundendienst an. Unseren Kundenservice erreichen Sie über unser Kontaktformular oder unter </span><a href=\"mailto:support@ku-europe.de\"><u>support@ku-europe.de</u></a><span style=\"background-color:rgb(255,255,255);color:rgb(51,51,51);font-size:15px;\">.</span></p><p><br>&nbsp;</p>",
+        "ggfOThKT8wl_childItem_0": "<p>Welche Zahlungsmethoden werden akzeptiert?</p>",
+        "ggfc5iV1661_text": "<p>Sie haben die Möglichkeit, via PayPal, SOFORT-Überweisung, Giropay, Kreditkarte oder per Klarna- Kauf auf Rechnung zu zahlen.</p><p><br>&nbsp;</p>",
+        "gglufgFxDYi_text": "<p>Es werden Ihnen keine Kosten für die Rücksendung berechnet, sofern Sie aus Deutschland bei uns bestellt haben. Sollten Sie außerhalb von Deutschland bestellt haben, können wir Ihnen leider keine kostenlose Rücksendung anbieten.</p><p><br>&nbsp;</p>",
+        "ggqWFiAUDkl_text": "<p>Fragen? Hier werden Sie fündig</p>",
+        "ggt2GS4irRU_text": "<p>Nach Zahlungseingang erhalten Sie eine DHL Sendungsnummer. Die Zustellung erfolgt in der Regel innerhalb von 1 bis 2 Werktagen. Unter <a href=\"https://www.dhl.de/de/privatkunden/pakete-empfangen/verfolgen.html\"><u>https://www.dhl.de/de/privatkunden/pakete-empfangen/verfolgen.html</u></a>&nbsp;können Sie jederzeit den aktuellen Status Ihrer Sendung einsehen.</p>",
+        "ggv6wjsiM5A_childItem_0": "<p>Was passiert, wenn ein Produkt beschädigt oder fehlerhaft ist?</p>",
+        "ggvl1Cry6GH_text": "Häufig gestellte Fragen",
+        "ggwXRNlwT5j_childItem_0": "<p>Wer trägt die Kosten für den Rückversand?</p>",
+        "ggzxeM6_xEg_childItem_0": "<p>Welche Versandoptionen gibt es und wie lange dauert die Lieferung?</p>",
+        "section_preload": "true"
+      },
+      "type": "gp-section-612205654702031725"
+    },
+    "gp_section_612207046506316587": {
+      "settings": {
+        "checksum": "f5586ad0c452109678f25ed3657d62afaeb295340f5b9d7022cf7630d12eeca9_1_1_1_0__1",
+        "ggmKGjKU8H8_text": "<p>Wir melden uns schnellstmöglich bei Ihnen zurück.</p>",
+        "ggu5_y_GBLI_text": "<p>Ihre Nachricht wurde gesendet!</p>"
+      },
+      "type": "gp-section-612207046506316587"
+    }
+  },
+  "order": [
+    "gp_section_612205652302889837",
+    "gp_section_612205653108195859",
+    "gp_section_612205654702031725",
+    "gp_section_612207046506316587"
+  ]
+}

@@ -31,25 +31,8 @@
         "ggdXguIU3a5_unavailableLabel": "Unavailable",
         "ggdXguIU3a5_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
         "ggOaGfrQJGq_text": "Körper &amp; Gesundheit",
-        "ggVT0ygP_I2_text": "4,7/5"
-      }
-    },
-    "gp_shopify_original_global_section_606289208251777591-3": {
-      "type": "gp-global-section-606289208251777591",
-      "settings": {
-        "section_preload": "false",
-        "checksum": "",
-        "ggeTY4QTbj7_text": "<a href=\"#\">Home</a>",
-        "ggPRbRQnGV8_text": "<a href=\"#\">Produkte</a>",
-        "ggBY3wrmroT_text": "<a href=\"#\">Versand</a>",
-        "ggb-xhtcMH7_text": "<a href=\"#\">Widerrufsbelehrung</a>",
-        "ggvNC-5Buht_text": "<a href=\"#\">Allgemeine Geschäftsbedingungen</a>",
-        "ggdHsP6WCqw_text": "<a href=\"#\">Wissenswertes</a>",
-        "gg3Im1YPiXV_text": "<a href=\"#\">Impressum</a>",
-        "gg0w-0A6RY4_text": "<a href=\"#\">Kontakt</a>",
-        "ggDHJWAW9Gy_text": "Zahlungsarten",
-        "ggejSiWmhTH_text": "Versand",
-        "ggE15oDDq8P_text": "Bekannt aus"
+        "ggVT0ygP_I2_text": "4,7/5",
+        "ggJhDIbQeib_customText_1645644783": "Vorraussichtliche Lieferung:"
       }
     },
     "gp_shopify_original_section_606266360720261892": {
@@ -208,7 +191,6 @@
     "gp_shopify_original_section_606266360720261892",
     "gp_shopify_original_global_section_606270395271611140-1",
     "gp_shopify_original_global_section_606268984240636826-2",
-    "gp_shopify_original_section_606416585791373879",
-    "gp_shopify_original_global_section_606289208251777591-3"
+    "gp_shopify_original_section_606416585791373879"
   ]
 }

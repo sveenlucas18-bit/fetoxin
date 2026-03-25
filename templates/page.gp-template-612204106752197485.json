@@ -1,0 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_global_section_606289208251777591-1": {
+      "type": "gp-global-section-606289208251777591",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "",
+        "ggeTY4QTbj7_text": "<a href=\"#\">Home</a>",
+        "ggPRbRQnGV8_text": "<a href=\"#\">Produkte</a>",
+        "ggBY3wrmroT_text": "<a href=\"#\">Versand</a>",
+        "ggb-xhtcMH7_text": "<a href=\"#\">Widerrufsbelehrung</a>",
+        "ggvNC-5Buht_text": "<a href=\"#\">Allgemeine Geschäftsbedingungen</a>",
+        "ggdHsP6WCqw_text": "<a href=\"#\">Wissenswertes</a>",
+        "gg3Im1YPiXV_text": "<a href=\"#\">Impressum</a>",
+        "gg0w-0A6RY4_text": "<a href=\"#\">Kontakt</a>",
+        "ggDHJWAW9Gy_text": "Zahlungsarten",
+        "ggejSiWmhTH_text": "Versand",
+        "ggE15oDDq8P_text": "Bekannt aus"
+      }
+    },
+    "gp_section_612204197198168675": {
+      "type": "gp-section-612204197198168675",
+      "settings": {
+        "section_preload": "true",
+        "checksum": "ff52ab54fb9081d981bb658223fab7bdbc3390c1329fd0c10e63c0382ec5c36c_1_1_1_0__1"
+      }
+    }
+  },
+  "order": [
+    "gp_section_612204197198168675",
+    "gp_global_section_606289208251777591-1"
+  ]
+}
