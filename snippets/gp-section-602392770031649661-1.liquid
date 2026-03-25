@@ -869,7 +869,7 @@
       {% assign amountDiscountValue = amountDiscount | money_without_trailing_zeros %}
       {% assign price = variant.price | divided_by: 100 %}
       {% assign minPriceValue = product.variants | map: "price" | sort | first | money_without_trailing_zeros %}
-      {% assign inventoryQuantityValue = variant.inventory_quantity %}
+      {% assign inventoryQuantityValue = variant.inventory_quantity | default: 0 %}
 
       {% assign percentDiscountKey = "{percent_discount}" %}
       {% assign amountDiscountKey = "{amount_discount}" %}
@@ -1242,7 +1242,7 @@
       {% assign amountDiscountValue = amountDiscount | money_without_trailing_zeros %}
       {% assign price = variant.price | divided_by: 100 %}
       {% assign minPriceValue = product.variants | map: "price" | sort | first | money_without_trailing_zeros %}
-      {% assign inventoryQuantityValue = variant.inventory_quantity %}
+      {% assign inventoryQuantityValue = variant.inventory_quantity | default: 0 %}
 
       {% assign percentDiscountKey = "{percent_discount}" %}
       {% assign amountDiscountKey = "{amount_discount}" %}
@@ -2079,11 +2079,11 @@
     <gp-product-button
       style="--pos-mobile:sticky;--top-mobile:0px"
       gp-data-wrapper="true"
-      gp-href="{{ request.origin }}{{ routes.root_url | split: '/' | join: '/' }}/cart"
+      gp-href="https://builder.gempages.net/post-purchase/preview?url=/post-purchase/preview&pageID=576951192974787323&title=Upsell%20Page&shopToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnZW14IiwiZXhwIjoxNzUzNDM2NzE2LCJpYXQiOjE3NTMzNTAzMTYsImp0aSI6IjQzNDc3NjQ2Mzg3NTUwNzE0NSJ9.Q5YwdwVdWhk71Q-eMal_cDuT35IjqhIJfoMewtmXyBYMyOUKYJQstsssqGulmwkeffiw3g5SJgw0MwwMEZ85NBgFk8o8BFFZ32KiDca-4agYUGz5sHgKb_AKciEuDhJakcffnpkdc2oY7bzhoBTkzrUkY3acSOXfd1fnNbGrtP1wo8gXhWz7GB5H5lw1J7s_xowS1CYB3HWG_odPCQ4V2GiO0Yo7LkA55BrCLgDM2ZK_xHMVzFxy4D9bFyTHSIvePYqNKractLim5aqjpAkJcmnkPZ08NQfpkfus-LNv29lm_Pa0FIywry1MpeA_LpdZ6SXszEEZ4O62WEmCoSewkeP0Wyt2IltsxwBDRusoZWBvwjYmShT_eo4diTZKQddilSy89HKyGL071V7GHJ82nyWa8kuAykfQsdtNFAeDtdnqHo51qmH8aTA9ASjnY2ALvL5PefYE8V07jXeblHqOnUgI96PxaI03lAAXfC8hF_Tq1gMfmFN2HOLVjsOfo5zqORISmw4OiwFyImWR_RkOuUDJgzCegANhTayEtlFAmoMCdjdNqFAQUV765-Er7OZi8CsQGT6uWF-LQAU32or04pWVGARJzwu4rhLTcIwZRZ-VH4YnYTw9HLH0rpAiCUZpkRngYdxX5WXsIqf3uEtrKbj39eYU1yNKY9vxSNPO4fQ&shopID=432750572815254551&shopName=seal-commerce-asia&publicShopToken=c2VhbC1jb21tZXJjZS1hc2lhLmdlbXBhZ2VzLmxpdmUtMmM3OTM1MjctOTI3Mi00MTYwLWFiNTMtMTU0MDc1NTkwN2ZiLTE2Njc0NjkwNDM&currentOfferID=576951201665385289&pageType=POST_PURCHASE&moneyFormat=${{amount}}&moneyWithCurrencyFormat=${{amount}}%20USD"
       class="gp-product-button"
       gp-label-out-of-stock="{{ section.settings.ggtEHIGWz24_outOfStockLabel }}"
       gp-label-unavailable="{{ section.settings.ggtEHIGWz24_unavailableLabel }}"
-      gp-data='{"styles":{"errorTypo":{"attrs":{"color":"error"},"type":"paragraph-2"},"successTypo":{"attrs":{"color":"success"},"type":"paragraph-2"}},"setting":{"errorType":"built-in","actionEffect":"open-cart-drawer","enableMessage":true,"label":"In den Warenkorb","errorMessage":"Cannot add product to cart","successMessage":"Add product to cart successfully","outOfStockLabel":"Ausverkauft","customURL":{"link":"https://builder.gempages.net/post-purchase/preview?url=/post-purchase/preview&pageID=576951192974787323&title=Upsell%20Page&shopToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnZW14IiwiZXhwIjoxNzUzNDM2NzE2LCJpYXQiOjE3NTMzNTAzMTYsImp0aSI6IjQzNDc3NjQ2Mzg3NTUwNzE0NSJ9.Q5YwdwVdWhk71Q-eMal_cDuT35IjqhIJfoMewtmXyBYMyOUKYJQstsssqGulmwkeffiw3g5SJgw0MwwMEZ85NBgFk8o8BFFZ32KiDca-4agYUGz5sHgKb_AKciEuDhJakcffnpkdc2oY7bzhoBTkzrUkY3acSOXfd1fnNbGrtP1wo8gXhWz7GB5H5lw1J7s_xowS1CYB3HWG_odPCQ4V2GiO0Yo7LkA55BrCLgDM2ZK_xHMVzFxy4D9bFyTHSIvePYqNKractLim5aqjpAkJcmnkPZ08NQfpkfus-LNv29lm_Pa0FIywry1MpeA_LpdZ6SXszEEZ4O62WEmCoSewkeP0Wyt2IltsxwBDRusoZWBvwjYmShT_eo4diTZKQddilSy89HKyGL071V7GHJ82nyWa8kuAykfQsdtNFAeDtdnqHo51qmH8aTA9ASjnY2ALvL5PefYE8V07jXeblHqOnUgI96PxaI03lAAXfC8hF_Tq1gMfmFN2HOLVjsOfo5zqORISmw4OiwFyImWR_RkOuUDJgzCegANhTayEtlFAmoMCdjdNqFAQUV765-Er7OZi8CsQGT6uWF-LQAU32or04pWVGARJzwu4rhLTcIwZRZ-VH4YnYTw9HLH0rpAiCUZpkRngYdxX5WXsIqf3uEtrKbj39eYU1yNKY9vxSNPO4fQ&shopID=432750572815254551&shopName=seal-commerce-asia&publicShopToken=c2VhbC1jb21tZXJjZS1hc2lhLmdlbXBhZ2VzLmxpdmUtMmM3OTM1MjctOTI3Mi00MTYwLWFiNTMtMTU0MDc1NTkwN2ZiLTE2Njc0NjkwNDM&currentOfferID=576951201665385289&pageType=POST_PURCHASE&moneyFormat=${{amount}}&moneyWithCurrencyFormat=${{amount}}%20USD","target":"_self"}},"variantID":"{{variant.id}}","disabled":"{{variant.available}}","totalVariant":"{{total_combinations}}"}'
+      gp-data='{"styles":{"errorTypo":{"attrs":{"color":"error"},"type":"paragraph-2"},"successTypo":{"attrs":{"color":"success"},"type":"paragraph-2"}},"setting":{"errorType":"built-in","actionEffect":"continue-shopping","enableMessage":true,"label":"In den Warenkorb","errorMessage":"Cannot add product to cart","successMessage":"Add product to cart successfully","outOfStockLabel":"Ausverkauft","customURL":{"link":"https://builder.gempages.net/post-purchase/preview?url=/post-purchase/preview&pageID=576951192974787323&title=Upsell%20Page&shopToken=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnZW14IiwiZXhwIjoxNzUzNDM2NzE2LCJpYXQiOjE3NTMzNTAzMTYsImp0aSI6IjQzNDc3NjQ2Mzg3NTUwNzE0NSJ9.Q5YwdwVdWhk71Q-eMal_cDuT35IjqhIJfoMewtmXyBYMyOUKYJQstsssqGulmwkeffiw3g5SJgw0MwwMEZ85NBgFk8o8BFFZ32KiDca-4agYUGz5sHgKb_AKciEuDhJakcffnpkdc2oY7bzhoBTkzrUkY3acSOXfd1fnNbGrtP1wo8gXhWz7GB5H5lw1J7s_xowS1CYB3HWG_odPCQ4V2GiO0Yo7LkA55BrCLgDM2ZK_xHMVzFxy4D9bFyTHSIvePYqNKractLim5aqjpAkJcmnkPZ08NQfpkfus-LNv29lm_Pa0FIywry1MpeA_LpdZ6SXszEEZ4O62WEmCoSewkeP0Wyt2IltsxwBDRusoZWBvwjYmShT_eo4diTZKQddilSy89HKyGL071V7GHJ82nyWa8kuAykfQsdtNFAeDtdnqHo51qmH8aTA9ASjnY2ALvL5PefYE8V07jXeblHqOnUgI96PxaI03lAAXfC8hF_Tq1gMfmFN2HOLVjsOfo5zqORISmw4OiwFyImWR_RkOuUDJgzCegANhTayEtlFAmoMCdjdNqFAQUV765-Er7OZi8CsQGT6uWF-LQAU32or04pWVGARJzwu4rhLTcIwZRZ-VH4YnYTw9HLH0rpAiCUZpkRngYdxX5WXsIqf3uEtrKbj39eYU1yNKY9vxSNPO4fQ&shopID=432750572815254551&shopName=seal-commerce-asia&publicShopToken=c2VhbC1jb21tZXJjZS1hc2lhLmdlbXBhZ2VzLmxpdmUtMmM3OTM1MjctOTI3Mi00MTYwLWFiNTMtMTU0MDc1NTkwN2ZiLTE2Njc0NjkwNDM&currentOfferID=576951201665385289&pageType=POST_PURCHASE&moneyFormat=${{amount}}&moneyWithCurrencyFormat=${{amount}}%20USD","target":"_self"}},"variantID":"{{variant.id}}","disabled":"{{variant.available}}","totalVariant":"{{total_combinations}}"}'
       data-variant-selection-required-message="{{ section.settings.ggtEHIGWz24_variantSelectionRequiredMessage }}"
       gp-enable-third-partycart="{{shop.metafields.GEMPAGES.enableThirdPartyCart}}"
     >
@@ -2368,25 +2368,57 @@
       </div>
     </div>
     
+    <div
+      role="presentation"
+      data-id="g6N01Eren8"
+      style="--mb:17px;--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:center"
+      class="gp-group/image gp-relative force-publish-1774286735109 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto g6N01Eren8"
+    >
+      <div
+        
+        style="border-radius:inherit;--jc:center"
+        class="gp-h-full gp-w-full gp-flex pointer-events-auto"
+      >
+        
+    <picture style="border-radius:inherit" class="gp-contents">
+      
+      <source media="(max-width: 767px)" data-srcSet="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctMTA2My05NCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0idXJsKCNnLTEwNjMtOTQpIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii0xMDYzIiB0bz0iMTA2MyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiICAvPgogIDwvc3ZnPg==" />
+      <source media="(max-width: 1024px)" data-srcSet="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctMTA2My05NCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0idXJsKCNnLTEwNjMtOTQpIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii0xMDYzIiB0bz0iMTA2MyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiICAvPgogIDwvc3ZnPg==" />
+    
+      
+      <img
+        base-src="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}" quality-type="{&quot;desktop&quot;:&quot;high&quot;}" quality-percent="{&quot;desktop&quot;:100}"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctMTA2My05NCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0idXJsKCNnLTEwNjMtOTQpIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii0xMDYzIiB0bz0iMTA2MyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiICAvPgogIDwvc3ZnPg==" data-src="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}"
+        alt=""
+        width="100%"
+        style="--aspect:auto;--aspect-tablet:auto;--aspect-mobile:auto;--objf:cover;--w:100%;--w-tablet:100%;--w-mobile:100%;--h:auto;--h-tablet:auto;--h-mobile:auto;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--radiusType:none;--shadow:none"
+        class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
+      />
+    
+    </picture>
+  
+      </div>
+    </div>
+  
     
 
     
 
     
-    <gp-row gp-data='{"uid":"ga5Yf8_wL2"}' data-id="ga5Yf8_wL2" id="ga5Yf8_wL2" data-same-height-subgrid-container class="ga5Yf8_wL2 gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--mb:32px;--pt:var(--g-s-l);--pl:var(--g-s-l);--pb:var(--g-s-l);--pr:var(--g-s-l);--mb-mobile:0px;--pt-mobile:var(--g-s-l);--pl-mobile:5px;--pb-mobile:0px;--pr-mobile:5px;--d:none;--d-tablet:none;--d-mobile:grid;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--cg:16px;--rg:0px;--gtc:minmax(0, 12fr);--w:var(--g-ct-w, 1200px);--h:auto;--pc:start">
+    <gp-row gp-data='{"uid":"gr1QlVlWFg"}' data-id="gr1QlVlWFg" id="gr1QlVlWFg" data-same-height-subgrid-container class="gr1QlVlWFg gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--mb:17px;--d:none;--d-tablet:none;--d-mobile:grid;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--cg:16px;--rg:16px;--rg-tablet:16px;--rg-mobile:16px;--gtc:minmax(0, 6fr) minmax(0, 6fr);--gtc-mobile:minmax(0, auto) minmax(0, auto);--w:var(--g-ct-w, 1200px);--h:auto;--pc:start">
       
 
       <div
       data-same-height-display-contents
-      style="--jc:start"
-      class="gqg8h6F8u1 gp-relative gp-flex gp-flex-col"
+      style="--jc:start;--jc-mobile:center"
+      class="gFo_k-CIGk gp-relative gp-flex gp-flex-col"
     >
       
     <div
       role="presentation"
       data-id="gxwcVTeT4B"
       style="--pl:15px;--pl-tablet:15px;--pl-mobile:0px;--pr-mobile:0px;--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:left"
-      class="gp-group/image gp-relative force-publish-1770987072522 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gxwcVTeT4B"
+      class="gp-group/image gp-relative force-publish-1774286735110 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gxwcVTeT4B"
     >
       <div
         
@@ -2405,7 +2437,7 @@
         src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4MCIgaGVpZ2h0PSIyODMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8ZGVmcz4KICAgICAgPGxpbmVhckdyYWRpZW50IGlkPSJnLTEyODAtMjgzIj4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjIwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjUwJSIgLz4KICAgICAgICA8c3RvcCBzdG9wLWNvbG9yPSJyZ2JhKDUxLCA1MSwgNTEsIDApIiBvZmZzZXQ9IjcwJSIgLz4KICAgICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwvZGVmcz4KICAgIDxyZWN0IHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjI4MyIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSIyODMiIGZpbGw9InVybCgjZy0xMjgwLTI4MykiIC8+CiAgICA8YW5pbWF0ZSB4bGluazpocmVmPSIjciIgYXR0cmlidXRlTmFtZT0ieCIgZnJvbT0iLTEyODAiIHRvPSIxMjgwIiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" data-src="{{ "DHL_Logo_svg.png" | file_url }}"
         alt=""
         width="100%"
-        style="--objf:cover;--w:100px;--w-tablet:100px;--w-mobile:100px;--h:auto;--h-tablet:auto;--h-mobile:auto;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--radiusType:none;--shadow:none"
+        style="--objf:cover;--w:100px;--w-tablet:100px;--w-mobile:70px;--h:auto;--h-tablet:auto;--h-mobile:auto;--b:none;--bc:#000000;--bw:1px 1px 1px 1px;--radiusType:none;--shadow:none"
         class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
       />
     
@@ -2414,6 +2446,12 @@
       </div>
     </div>
   
+    </div><div
+      data-same-height-display-contents
+      style="--jc:start;--jc-mobile:center"
+      class="gY_zwjC0xl gp-relative gp-flex gp-flex-col"
+    >
+      
     <gp-estimate-date>
       
     {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
@@ -2431,8 +2469,8 @@
     <span
       [object Object]
       
-      style="--fs:normal;--ff:var(--g-font-body, body);--weight:400;--size:16px;--size-tablet:13px;--size-mobile:18px;--lh:130%;--lh-tablet:150%;--lh-mobile:130%;--ls:normal;--c:#5E8E49;word-break:break-word;overflow:hidden"
-      element-attrs='{"pageContext":{"pageType":"GP_PRODUCT","sectionName":"","isPreviewing":false,"isOptimizePlan":false,"isTranslateWithLocale":false,"isLazyLoadSection":true,"isLazyLoadImage":true,"hasCollectionHandle":true,"numberOfProductOfProductList":0,"pageBackground":"","fontType":"google","primaryLocale":"","showPriceCurrency":false,"enableLazyLoadImage":true},"setting":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"isReact":false,"builderProps":{"uid":"gq_jIEDtKc","builderData":{"advanced":{"border":{"desktop":{"normal":{"border":"none","borderType":"none","borderWidth":"1px","color":"#121212","isCustom":true,"width":"1px 1px 1px 1px"}}},"boxShadow":{"desktop":{"normal":{"angle":49,"blur":"4px","color":"rgba(18, 18, 18, 0.7)","distance":"4px","spread":"4px","type":"shadow-1"}}},"d":{"desktop":true,"mobile":true,"tablet":true},"hasBoxShadow":{"desktop":{"normal":false}},"op":{"desktop":"100%"},"pageType":"GP_PRODUCT","rounded":{"desktop":{"normal":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"}}},"spacing-setting":{"edited":["tablet","mobile"],"desktop":{"link":false,"margin":{"bottom":0},"padding":{"left":"12px","right":"32px"}},"tablet":{"link":false,"margin":{"bottom":0},"padding":{"left":"10px","right":"28px"}},"mobile":{"link":false,"padding":{"left":"0px","right":"28px"}}}},"label":"Delivery Date","settings":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"styles":{"align":{"desktop":"left"},"typoCustom":{"type":"paragraph-2","attrs":{"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"18px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"150%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}},"typoDate":{"type":"paragraph-2","attrs":{"bold":true,"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"18px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"130%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}}},"tag":"EstimateDate","uid":"gq_jIEDtKc","childrens":[],"type":"component"}},"textWithTranslate":"{{ section.settings.ggq_jIEDtKc_customText }}"}'
+      style="--fs:normal;--ff:var(--g-font-Inter, 'Inter'), var(--g-font-body, body);--weight:400;--size:16px;--size-tablet:13px;--size-mobile:12px;--lh:130%;--lh-tablet:150%;--lh-mobile:100%;--ls:normal;--c:#5E8E49;word-break:break-word;overflow:hidden"
+      element-attrs='{"pageContext":{"pageType":"GP_PRODUCT","sectionName":"","isPreviewing":false,"isOptimizePlan":false,"isTranslateWithLocale":false,"isLazyLoadSection":true,"isLazyLoadImage":true,"hasCollectionHandle":true,"numberOfProductOfProductList":0,"pageBackground":"","fontType":"google","primaryLocale":"","showPriceCurrency":false,"enableLazyLoadImage":true,"mode":"PAGE"},"setting":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"isReact":false,"builderProps":{"uid":"gq_jIEDtKc","builderData":{"advanced":{"border":{"desktop":{"normal":{"border":"none","borderType":"none","borderWidth":"1px","color":"#121212","isCustom":true,"width":"1px 1px 1px 1px"}}},"boxShadow":{"desktop":{"normal":{"angle":49,"blur":"4px","color":"rgba(18, 18, 18, 0.7)","distance":"4px","spread":"4px","type":"shadow-1"}}},"d":{"desktop":true,"mobile":true,"tablet":true},"hasBoxShadow":{"desktop":{"normal":false}},"op":{"desktop":"100%"},"pageType":"GP_PRODUCT","rounded":{"desktop":{"normal":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"}}},"spacing-setting":{"edited":["tablet","mobile"],"desktop":{"link":false,"margin":{"bottom":0},"padding":{"left":"12px","right":"32px"}},"tablet":{"link":false,"margin":{"bottom":0},"padding":{"left":"10px","right":"28px"}},"mobile":{"link":false,"padding":{"left":"0px","right":"28px"}}}},"label":"Delivery Date","settings":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"styles":{"align":{"desktop":"left"},"typoCustom":{"type":"paragraph-2","attrs":{"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"12px","tablet":"13px"},"fontWeight":"400","lineHeight":{"desktop":"130%","mobile":"100%","tablet":"150%"},"letterSpacing":{"desktop":"normal"},"fontFamily":"Inter","fontStyle":"normal","textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom","enable":false},"hasShadowText":false}},"typoDate":{"type":"paragraph-2","attrs":{"bold":true,"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"12px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"130%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}}},"tag":"EstimateDate","uid":"gq_jIEDtKc","childrens":[],"type":"component"}},"textWithTranslate":"{{ section.settings.ggq_jIEDtKc_customText }}"}'
     >
       {{ section.settings.ggq_jIEDtKc_customText }}
     </span>
@@ -2440,10 +2478,10 @@
     <span
       [object Object]
       class="estimate-date-main"
-      style="--fs:normal;--ff:var(--g-font-body, body);--size:16px;--size-tablet:13px;--size-mobile:18px;--lh:130%;--lh-tablet:130%;--lh-mobile:130%;--ls:normal;--weight:bold;--c:#5E8E49;word-break:break-word;overflow:hidden"
+      style="--fs:normal;--ff:var(--g-font-body, body);--size:16px;--size-tablet:13px;--size-mobile:12px;--lh:130%;--lh-tablet:130%;--lh-mobile:130%;--ls:normal;--weight:bold;--c:#5E8E49;word-break:break-word;overflow:hidden"
       element-attrs='undefined'
     >
-      Sun, Feb 15
+      Wed, Mar 25
     </span>
   
         </div>
@@ -2477,7 +2515,7 @@
       role="presentation"
       data-id="gCetvnqFQC"
       style="--pl:0px;--pl-tablet:0px;--pl-mobile:0px;--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:left"
-      class="gp-group/image gp-relative force-publish-1770987072524 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gCetvnqFQC"
+      class="gp-group/image gp-relative force-publish-1774286735111 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gCetvnqFQC"
     >
       <div
         
@@ -2555,7 +2593,7 @@
       [object Object]
       
       style="--fs:normal;--ff:var(--g-font-body, body);--weight:400;--size:16px;--size-tablet:13px;--size-mobile:12px;--lh:130%;--lh-tablet:150%;--lh-mobile:130%;--ls:normal;--c:#5E8E49;word-break:break-word;overflow:hidden"
-      element-attrs='{"pageContext":{"pageType":"GP_PRODUCT","sectionName":"","isPreviewing":false,"isOptimizePlan":false,"isTranslateWithLocale":false,"isLazyLoadSection":true,"isLazyLoadImage":true,"hasCollectionHandle":true,"numberOfProductOfProductList":0,"pageBackground":"","fontType":"google","primaryLocale":"","showPriceCurrency":false,"enableLazyLoadImage":true},"setting":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"isReact":false,"builderProps":{"uid":"gMlLKoJWvE","builderData":{"advanced":{"border":{"desktop":{"normal":{"border":"none","borderType":"none","borderWidth":"1px","color":"#121212","isCustom":true,"width":"1px 1px 1px 1px"}}},"boxShadow":{"desktop":{"normal":{"angle":49,"blur":"4px","color":"rgba(18, 18, 18, 0.7)","distance":"4px","spread":"4px","type":"shadow-1"}}},"d":{"desktop":true,"mobile":true,"tablet":true},"hasBoxShadow":{"desktop":{"normal":false}},"op":{"desktop":"100%"},"pageType":"GP_PRODUCT","rounded":{"desktop":{"normal":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"}}},"spacing-setting":{"desktop":{"link":false,"margin":{"bottom":0},"padding":{"left":"12px","right":"32px"}},"tablet":{"link":false,"margin":{"bottom":0},"padding":{"left":"10px","right":"28px"}}}},"label":"Delivery Date","settings":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"styles":{"align":{"desktop":"left"},"typoCustom":{"type":"paragraph-2","attrs":{"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"12px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"150%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}},"typoDate":{"type":"paragraph-2","attrs":{"bold":true,"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"12px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"130%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}}},"tag":"EstimateDate","uid":"gMlLKoJWvE","childrens":[],"type":"component"}},"textWithTranslate":"{{ section.settings.ggMlLKoJWvE_customText }}"}'
+      element-attrs='{"pageContext":{"pageType":"GP_PRODUCT","sectionName":"","isPreviewing":false,"isOptimizePlan":false,"isTranslateWithLocale":false,"isLazyLoadSection":true,"isLazyLoadImage":true,"hasCollectionHandle":true,"numberOfProductOfProductList":0,"pageBackground":"","fontType":"google","primaryLocale":"","showPriceCurrency":false,"enableLazyLoadImage":true,"mode":"PAGE"},"setting":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"isReact":false,"builderProps":{"uid":"gMlLKoJWvE","builderData":{"advanced":{"border":{"desktop":{"normal":{"border":"none","borderType":"none","borderWidth":"1px","color":"#121212","isCustom":true,"width":"1px 1px 1px 1px"}}},"boxShadow":{"desktop":{"normal":{"angle":49,"blur":"4px","color":"rgba(18, 18, 18, 0.7)","distance":"4px","spread":"4px","type":"shadow-1"}}},"d":{"desktop":true,"mobile":true,"tablet":true},"hasBoxShadow":{"desktop":{"normal":false}},"op":{"desktop":"100%"},"pageType":"GP_PRODUCT","rounded":{"desktop":{"normal":{"bblr":"0px","bbrr":"0px","btlr":"0px","btrr":"0px","radiusType":"none"}}},"spacing-setting":{"desktop":{"link":false,"margin":{"bottom":0},"padding":{"left":"12px","right":"32px"}},"tablet":{"link":false,"margin":{"bottom":0},"padding":{"left":"10px","right":"28px"}}}},"label":"Delivery Date","settings":{"background":{"desktop":{"attachment":"scroll","color":"transparent","image":{"height":0,"src":"","width":0},"position":{"x":50,"y":50},"repeat":"no-repeat","size":"cover","type":"color"}},"customFormat":"%d.%m.%y","customText":"Kostenlose Lieferung bis","enableCustomText":true,"estimateTime":"2","globalSize":{"desktop":{"gap":"","width":"Auto"}},"ifOutOfStock":"hide","maxEstimate":5,"minEstimate":2,"translate":"customText","typeEstimate":"specific","typeFormat":"%a, %b %d"},"styles":{"align":{"desktop":"left"},"typoCustom":{"type":"paragraph-2","attrs":{"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"12px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"150%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}},"typoDate":{"type":"paragraph-2","attrs":{"bold":true,"color":"#5E8E49"},"custom":{"fontSize":{"desktop":"16px","mobile":"12px","tablet":"13px"},"fontStyle":"normal","fontWeight":"400","hasShadowText":false,"letterSpacing":{"desktop":"normal"},"lineHeight":{"desktop":"130%","mobile":"130%","tablet":"130%"},"textShadow":{"angle":37,"blur":"2px","color":"rgba(0, 0, 0, 0.6)","distance":"4px","type":"custom"}}}},"tag":"EstimateDate","uid":"gMlLKoJWvE","childrens":[],"type":"component"}},"textWithTranslate":"{{ section.settings.ggMlLKoJWvE_customText }}"}'
     >
       {{ section.settings.ggMlLKoJWvE_customText }}
     </span>
@@ -2566,7 +2604,7 @@
       style="--fs:normal;--ff:var(--g-font-body, body);--size:16px;--size-tablet:13px;--size-mobile:12px;--lh:130%;--lh-tablet:130%;--lh-mobile:130%;--ls:normal;--weight:bold;--c:#5E8E49;word-break:break-word;overflow:hidden"
       element-attrs='undefined'
     >
-      Sun, Feb 15
+      Wed, Mar 25
     </span>
   
         </div>

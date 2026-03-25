@@ -1,1 +1,214 @@
-{"sections":{"gp_shopify_original_global_section_606268984240636826-2":{"type":"gp-global-section-606268984240636826","settings":{"section_preload":"false","checksum":"","ggVP1X_FLyl_text":"<p>4,9\/5 Kundenzufriedenheit<\/p>","ggZ3mVO9PHZ_text":"<p>30 Tage Geld-zurück-Garantie<\/p>","ggXF3k5_JBn_text":"<p>Kostenloser Versand<\/p>","ggSjsFnoVUC_text":"<p>4,9\/5 Kundenzufriedenheit<\/p>","ggNkSZAgDR0_text":"<p>Kostenloser Versand<\/p>","gg2sFu7DrJD_text":"<p>30 Tage Geld-zurück-Garantie<\/p>"}},"gp_shopify_original_global_section_606270395271611140-1":{"type":"gp-global-section-606270395271611140","settings":{"section_preload":"false","checksum":"","ggdXguIU3a5_outOfStockLabel":"Out Of Stock","ggdXguIU3a5_unavailableLabel":"Unavailable","ggdXguIU3a5_variantSelectionRequiredMessage":"Please select a variant to add product to cart","ggOaGfrQJGq_text":"<p>Körper &amp; Gesundheit<\/p>","ggVT0ygP_I2_text":"<p>4,7\/5<\/p>","ggJhDIbQeib_customText":"Estimate delivery between"}},"gp_shopify_original_section_606266360720261892":{"type":"gp-section-606266360720261892","settings":{"section_preload":"true","checksum":"","ggY0CVIheue_text":"Alle Produkte"}},"gp_shopify_original_section_606416181879898679":{"type":"gp-section-606416181879898679","settings":{"checksum":"","ggYHU11pXBe_text":"<p><span style=\"color:#920053;font-size:26px;\"><strong>Lorem ipsum dolor sit amet&nbsp;<\/strong><\/span><\/p><p>&nbsp;<\/p><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p><p>&nbsp;<\/p>","ggJ3j-JRsI9_childItem_0":"Your custom text goes here","ggJ3j-JRsI9_childItem_1":"Your custom text goes here","ggJ3j-JRsI9_childItem_2":"Your custom text goes here"}},"gp_shopify_original_section_606416585791373879":{"type":"gp-section-606416585791373879","settings":{"checksum":"","ggx4BA2B6_Y_text":"<p><span style=\"color:#2B2B2B;font-size:26px;\"><strong>Lorem ipsum dolor sit amet&nbsp;<\/strong><\/span><\/p><p>&nbsp;<\/p><p>consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.<\/p><p>&nbsp;<\/p>","ggcxg3w9aXq_childItem_0":"Your custom text goes here","ggcxg3w9aXq_childItem_1":"Your custom text goes here","ggcxg3w9aXq_childItem_2":"Your custom text goes here"}},"main":{"type":"main-collection","blocks":{"filters":{"type":"filters","static":true,"settings":{"enable_filtering":true,"filter_style":"horizontal","filter_width":"centered","text_label_case":"default","show_swatch_label":false,"show_filter_label":false,"enable_sorting":true,"enable_grid_density":true,"inherit_color_scheme":true,"color_scheme":"","padding-block-start":8,"padding-block-end":8,"padding-inline-start":0,"padding-inline-end":0,"facets_margin_bottom":8,"facets_margin_right":20},"blocks":{}},"product-card":{"type":"_product-card","static":true,"settings":{"product_card_gap":4,"inherit_color_scheme":true,"color_scheme":"","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{"card-gallery":{"type":"_product-card-gallery","settings":{"image_ratio":"adapt","border":"none","border_width":1,"border_opacity":100,"border_radius":0,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"product_title_4nY4eT":{"type":"product-title","name":"t:names.product_title","settings":{"width":"100%","max_width":"normal","alignment":"left","type_preset":"rte","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","wrap":"pretty","color":"var(--color-foreground)","background":false,"background_color":"#00000026","corner_radius":0,"padding-block-start":4,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"price_EzJzMm":{"type":"price","settings":{"show_sale_price_first":true,"show_installments":false,"show_tax_info":false,"type_preset":"h6","width":"100%","alignment":"left","font":"var(--font-body--family)","font_size":"1rem","line_height":"normal","letter_spacing":"normal","case":"none","color":"var(--color-foreground)","padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}}},"block_order":["card-gallery","product_title_4nY4eT","price_EzJzMm"]}},"disabled":true,"settings":{"layout_type":"grid","product_card_size":"medium","mobile_product_card_size":"small","enable_infinite_scroll":true,"products_per_page":24,"product_grid_width":"centered","full_width_on_mobile":true,"columns_gap_horizontal":16,"columns_gap_vertical":24,"padding-inline-start":0,"padding-inline-end":0,"color_scheme":"scheme-1","padding-block-start":0,"padding-block-end":32}}},"order":["main","gp_shopify_original_section_606266360720261892","gp_shopify_original_global_section_606270395271611140-1","gp_shopify_original_section_606416181879898679","gp_shopify_original_global_section_606268984240636826-2","gp_shopify_original_section_606416585791373879"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "gp_shopify_original_global_section_606268984240636826-2": {
+      "type": "gp-global-section-606268984240636826",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "",
+        "ggVP1X_FLyl_text": "4,9/5 Kundenzufriedenheit",
+        "ggZ3mVO9PHZ_text": "30 Tage Geld-zurück-Garantie",
+        "ggXF3k5_JBn_text": "Kostenloser Versand",
+        "ggSjsFnoVUC_text": "4,9/5 Kundenzufriedenheit",
+        "ggNkSZAgDR0_text": "Kostenloser Versand",
+        "gg2sFu7DrJD_text": "30 Tage Geld-zurück-Garantie"
+      }
+    },
+    "gp_shopify_original_global_section_606270395271611140-1": {
+      "type": "gp-global-section-606270395271611140",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "",
+        "ggdXguIU3a5_outOfStockLabel": "Out Of Stock",
+        "ggdXguIU3a5_unavailableLabel": "Unavailable",
+        "ggdXguIU3a5_variantSelectionRequiredMessage": "Please select a variant to add product to cart",
+        "ggOaGfrQJGq_text": "Körper &amp; Gesundheit",
+        "ggVT0ygP_I2_text": "4,7/5"
+      }
+    },
+    "gp_shopify_original_global_section_606289208251777591-3": {
+      "type": "gp-global-section-606289208251777591",
+      "settings": {
+        "section_preload": "false",
+        "checksum": "",
+        "ggeTY4QTbj7_text": "<a href=\"#\">Home</a>",
+        "ggPRbRQnGV8_text": "<a href=\"#\">Produkte</a>",
+        "ggBY3wrmroT_text": "<a href=\"#\">Versand</a>",
+        "ggb-xhtcMH7_text": "<a href=\"#\">Widerrufsbelehrung</a>",
+        "ggvNC-5Buht_text": "<a href=\"#\">Allgemeine Geschäftsbedingungen</a>",
+        "ggdHsP6WCqw_text": "<a href=\"#\">Wissenswertes</a>",
+        "gg3Im1YPiXV_text": "<a href=\"#\">Impressum</a>",
+        "gg0w-0A6RY4_text": "<a href=\"#\">Kontakt</a>",
+        "ggDHJWAW9Gy_text": "Zahlungsarten",
+        "ggejSiWmhTH_text": "Versand",
+        "ggE15oDDq8P_text": "Bekannt aus"
+      }
+    },
+    "gp_shopify_original_section_606266360720261892": {
+      "type": "gp-section-606266360720261892",
+      "settings": {
+        "section_preload": "true",
+        "checksum": "",
+        "ggY0CVIheue_text": "Alle Produkte",
+        "ggu4Fu0Lf3V_text": "<p>Finden Sie das passende Produkt für Ihre Bedürfnisse.</p>"
+      }
+    },
+    "gp_shopify_original_section_606416585791373879": {
+      "type": "gp-section-606416585791373879",
+      "settings": {
+        "checksum": "",
+        "ggx4BA2B6_Y_text": "<p><span style=\"color:#2B2B2B;font-size:23px;\"><strong>Dein täglicher Reset für Körper &amp; Balance&nbsp;</strong></span></p><p>&nbsp;</p><p>Fetoxin unterstützt Sie dabei, Ihren Körper sanft zu entlasten und Ihr Wohlbefinden zu steigern. Die ausgewählte Kombination hochwertiger Inhaltsstoffe ergänzt Ihre Routine – für ein leichteres, ausgeglicheneres Gefühl im Alltag.</p><p>&nbsp;</p>",
+        "ggcxg3w9aXq_childItem_0": "<p>Unterstützt Ihr Wohlbefinden im Alltag</p>",
+        "ggcxg3w9aXq_childItem_1": "<p>Ideal als Ergänzung zu einer bewussten Ernährung</p>",
+        "ggcxg3w9aXq_childItem_2": "<p>Einfach in Ihre tägliche Routine integrierbar</p>"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "filters": {
+          "type": "filters",
+          "static": true,
+          "settings": {
+            "enable_filtering": true,
+            "filter_style": "horizontal",
+            "filter_width": "centered",
+            "text_label_case": "default",
+            "show_swatch_label": false,
+            "show_filter_label": false,
+            "enable_sorting": true,
+            "enable_grid_density": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "padding-block-start": 8,
+            "padding-block-end": 8,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0,
+            "facets_margin_bottom": 8,
+            "facets_margin_right": 20
+          },
+          "blocks": {}
+        },
+        "product-card": {
+          "type": "_product-card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "settings": {
+                "image_ratio": "adapt",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title_4nY4eT": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 4,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price_EzJzMm": {
+              "type": "price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title_4nY4eT",
+            "price_EzJzMm"
+          ]
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "layout_type": "grid",
+        "product_card_size": "medium",
+        "mobile_product_card_size": "small",
+        "enable_infinite_scroll": true,
+        "products_per_page": 24,
+        "product_grid_width": "centered",
+        "full_width_on_mobile": true,
+        "columns_gap_horizontal": 16,
+        "columns_gap_vertical": 24,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 0,
+        "padding-block-end": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "gp_shopify_original_section_606266360720261892",
+    "gp_shopify_original_global_section_606270395271611140-1",
+    "gp_shopify_original_global_section_606268984240636826-2",
+    "gp_shopify_original_section_606416585791373879",
+    "gp_shopify_original_global_section_606289208251777591-3"
+  ]
+}

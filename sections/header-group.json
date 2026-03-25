@@ -1,1 +1,102 @@
-{"type":"header","name":"Header","sections":{"header_section":{"type":"header","blocks":{"header-logo":{"type":"_header-logo","static":true,"settings":{"hide_logo_on_home_page":false,"padding-block-start":0,"padding-block-end":0,"padding-inline-start":0,"padding-inline-end":0},"blocks":{}},"header-menu":{"type":"_header-menu","static":true,"settings":{"menu":"main-menu","color_scheme":"","type_font_primary_size":"0.875rem","menu_font_style":"inverse","type_font_primary_link":"body","type_case_primary_link":"none","menu_style":"featured_products","featured_products_aspect_ratio":"4 \/ 5","featured_collections_aspect_ratio":"16 \/ 9","image_border_radius":0,"navigation_bar":false,"color_scheme_navigation_bar":"","drawer_accordion":false,"drawer_accordion_expand_first":false,"drawer_dividers":false},"blocks":{}}},"settings":{"logo_position":"left","menu_position":"left","menu_row":"top","show_search":true,"search_position":"right","search_row":"top","show_country":true,"country_selector_style":false,"show_language":true,"localization_font":"heading","localization_font_size":"0.875rem","localization_position":"right","localization_row":"top","section_width":"page-width","section_height":"standard","enable_sticky_header":"always","divider_width":0,"divider_size":"page-width","border_width":0,"color_scheme_top":"scheme-1","color_scheme_bottom":"","color_scheme_transparent":"scheme-6","enable_transparent_header_home":false,"home_color_scheme":"inverse","enable_transparent_header_product":false,"product_color_scheme":"default","enable_transparent_header_collection":false,"collection_color_scheme":"default"}},"gp_global_section_606268984240636826_UnHykq":{"type":"gp-global-section-606268984240636826","name":"Announement Bar","settings":{"section_preload":"off_lazy_script","checksum":"","ggVP1X_FLyl_text":"<p>4,9\/5 Kundenzufriedenheit<\/p>","ggZ3mVO9PHZ_text":"<p>30 Tage Geld-zurück-Garantie<\/p>","ggXF3k5_JBn_text":"<p>Kostenloser Versand<\/p>","ggSjsFnoVUC_text":"<p>4,9\/5 Kundenzufriedenheit<\/p>","ggNkSZAgDR0_text":"<p>Kostenloser Versand<\/p>","gg2sFu7DrJD_text":"<p>30 Tage Geld-zurück-Garantie<\/p>"}},"gp_global_section_606269011537166934_DbjxEE":{"type":"gp-global-section-606269011537166934","name":"Header menü","settings":{"section_preload":"off_lazy_script","checksum":"","gg0AN4VNofh_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/frontpage\">Sale<\/a><\/p>","gg4A6P1AVZk_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/frontpage\">Alle Produkte<\/a><\/p>","ggWMqJ8TLdU_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/korper-gesundheit\">Körper und Gesundheit<\/a><\/p>","ggKyMi23TZX_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/beauty\">Beauty<\/a><\/p>","ggvxaac7jMS_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/frontpage\">Sale<\/a><\/p>","gg5qJA_jxWG_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/frontpage\">Alle Produkte<\/a><\/p>","ggJJOBfJBP6_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/korper-gesundheit\">Körper und Gesundheit<\/a><\/p>","gg03VYzlRhv_text":"<p><a href=\"https:\/\/fetoxin.myshopify.com\/collections\/beauty\">Beauty<\/a><\/p>"}}},"order":["header_section","gp_global_section_606268984240636826_UnHykq","gp_global_section_606269011537166934_DbjxEE"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "header_section": {
+      "type": "header",
+      "blocks": {
+        "header-logo": {
+          "type": "_header-logo",
+          "static": true,
+          "settings": {
+            "hide_logo_on_home_page": false,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "header-menu": {
+          "type": "_header-menu",
+          "static": true,
+          "settings": {
+            "menu": "mobile-menu",
+            "color_scheme": "",
+            "type_font_primary_size": "0.875rem",
+            "menu_font_style": "inverse",
+            "type_font_primary_link": "body",
+            "type_case_primary_link": "none",
+            "menu_style": "featured_products",
+            "featured_products_aspect_ratio": "4 / 5",
+            "featured_collections_aspect_ratio": "16 / 9",
+            "image_border_radius": 0,
+            "navigation_bar": false,
+            "color_scheme_navigation_bar": "",
+            "drawer_accordion": false,
+            "drawer_accordion_expand_first": false,
+            "drawer_dividers": false
+          },
+          "blocks": {}
+        }
+      },
+      "settings": {
+        "logo_position": "left",
+        "menu_position": "left",
+        "menu_row": "top",
+        "show_search": true,
+        "search_position": "right",
+        "search_row": "top",
+        "show_country": true,
+        "country_selector_style": false,
+        "show_language": true,
+        "localization_font": "heading",
+        "localization_font_size": "0.875rem",
+        "localization_position": "right",
+        "localization_row": "top",
+        "section_width": "page-width",
+        "section_height": "standard",
+        "enable_sticky_header": "always",
+        "divider_width": 0,
+        "divider_size": "page-width",
+        "border_width": 0,
+        "color_scheme_top": "scheme-1",
+        "color_scheme_bottom": "",
+        "color_scheme_transparent": "scheme-6",
+        "enable_transparent_header_home": false,
+        "home_color_scheme": "inverse",
+        "enable_transparent_header_product": false,
+        "product_color_scheme": "default",
+        "enable_transparent_header_collection": false,
+        "collection_color_scheme": "default"
+      }
+    },
+    "gp_global_section_606268984240636826_UnHykq": {
+      "type": "gp-global-section-606268984240636826",
+      "name": "Announement Bar",
+      "settings": {
+        "section_preload": "off_lazy_script",
+        "checksum": "",
+        "ggVP1X_FLyl_text": "<p>4,9/5 Kundenzufriedenheit</p>",
+        "ggZ3mVO9PHZ_text": "<p>30 Tage Geld-zurück-Garantie</p>",
+        "ggXF3k5_JBn_text": "<p>Kostenloser Versand</p>",
+        "ggSjsFnoVUC_text": "<p>4,9/5 Kundenzufriedenheit</p>",
+        "ggNkSZAgDR0_text": "<p>Kostenloser Versand</p>",
+        "gg2sFu7DrJD_text": "<p>30 Tage Geld-zurück-Garantie</p>"
+      }
+    }
+  },
+  "order": [
+    "header_section",
+    "gp_global_section_606268984240636826_UnHykq"
+  ]
+}

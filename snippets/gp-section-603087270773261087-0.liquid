@@ -3,7 +3,7 @@
       style="--jc:start"
       class="g3aNPxD-8W gp-relative gp-flex gp-flex-col"
     >
-      <div gp-el-wrapper style="--mb:var(--g-s-l);--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%" class="gIrVw3lqCi ">
+      <div gp-el-wrapper style="--mb:0px;--mb-tablet:0px;--mb-mobile:0px;--d:block;--d-tablet:block;--d-mobile:none;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%" class="gIrVw3lqCi ">
       {% unless product %}<p>{{ 'gempages.ProductTitle.product_not_found' | t }}</p>{% else %}
       <gp-product-title
         gp-data='{"setting":{"linkProduct":false},"uid":"gIrVw3lqCi"}'
@@ -34,7 +34,7 @@
     
 
     
-    <gp-row gp-data='{"uid":"gzLMXGMpAc"}' data-id="gzLMXGMpAc" id="gzLMXGMpAc" data-same-height-subgrid-container class="gzLMXGMpAc gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--mb:var(--g-s-l);--d:grid;--d-tablet:grid;--d-mobile:grid;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--cg:8px;--rg:0px;--gtc:minmax(0, auto) minmax(0, auto);--w:var(--g-ct-w, 1200px);--h:auto;--pc:start;--pc-mobile:center">
+    <gp-row gp-data='{"uid":"gzLMXGMpAc"}' data-id="gzLMXGMpAc" id="gzLMXGMpAc" data-same-height-subgrid-container class="gzLMXGMpAc gp-relative gp-mx-auto gp-mb-0 gp-grid gp-max-w-full gp-transition-colors gp-duration-200 gp-ease-in-out [&_*]:gp-max-w-full gp-grid-rows-[1fr]" style="--mb:var(--g-s-l);--d:grid;--d-tablet:grid;--d-mobile:none;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--cg:8px;--rg:0px;--gtc:minmax(0, auto) minmax(0, auto);--w:var(--g-ct-w, 1200px);--h:auto;--pc:start;--pc-mobile:center">
       
 
       <div
@@ -116,7 +116,23 @@
       
     </gp-row>
   
-  <div gp-el-wrapper style="--d:none;--d-tablet:none;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:8px;--bbrr:8px;--btlr:8px;--btrr:8px;--op:100%;--mb:var(--g-s-l)" class="gD4zdAH01_ ">
+  
+    {% assign locationOrigin = request.origin | append: routes.root_url | split: '/' | join: '/' %}
+    <div data-id="goZS2ynIxD"
+        class="goZS2ynIxD"
+        style="--ta:left;--mb:7px;--mb-tablet:7px;--mb-mobile:7px;--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--dynamic-source-color:#F4F4F4"
+      >
+      <div class="gp-flex" style="--jc:left">
+        <div
+          data-gp-text
+          class="gp-g-paragraph-1  gp-text-instant gp-text"
+          style="--w:100%;--w-tablet:100%;--w-mobile:100%;--tdt:auto;--b:none;--bc:#121212;--bw:1px 1px 1px 1px;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--shadow:none;--ta:left;--ta-mobile:center;--line-clamp:unset;--line-clamp-tablet:unset;--line-clamp-mobile:unset;--size:20px;--size-tablet:22px;--size-mobile:21px;--weight:bold;--c:#5FC4D9;--tt:none;word-break:break-word;--bgc:transparent;--bgi:url();--bgp:50% 50%;--bgs:cover;--bgr:no-repeat;--bga:scroll;overflow:hidden;--tdl:"
+        >
+          {{ section.settings.ggoZS2ynIxD_text | replace: '$locationOrigin', locationOrigin }}
+        </div>
+      </div>
+    </div>
+    <div gp-el-wrapper style="--d:none;--d-tablet:none;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:8px;--bbrr:8px;--btlr:8px;--btrr:8px;--op:100%;--mb:var(--g-s-l)" class="gD4zdAH01_ ">
       
     <gp-product-bundle-discount
       gp-data='{"styles":{"size":{"desktop":{"padding":{"type":"custom","top":"12px","left":"16px","bottom":"12px","right":"16px","link":false},"gap":"12px","width":"100%"},"mobile":{"padding":{"top":"8px","left":"8px","right":"8px","bottom":"8px","linked":false,"link":false},"gap":"12px","width":"100%"}},"borderBundle":{"normal":{"border":"solid","borderWidth":"1px","width":"2px 2px 2px 2px","color":"line-2","isCustom":true},"hover":{"border":"solid","borderWidth":"1px","width":"2px 2px 2px 2px","color":"line-2","isCustom":true},"active":{"border":"solid","borderWidth":"1px","width":"2px 2px 2px 2px","color":"#4890AF","isCustom":true}},"iconColor":{"normal":"line-2","active":"#1C4151"},"backgroundColor":{"normal":"#FFFFFF","active":"#B2EAF4","hover":"#E5FBFF"},"boxShadowBundle":{},"roundedBundle":{"normal":{"btrr":"8px","bblr":"8px","bbrr":"8px","btlr":"8px","radiusType":"rounded"},"active":{"btrr":"8px","bblr":"8px","bbrr":"8px","btlr":"8px","radiusType":"rounded"}},"align":"left","enableHoverEffect":true,"enableActiveEffect":true},"settings":{"useProductCompareAtPrice":false,"selectItemDefault":0,"hideNoDiscountItem":false,"hasPreSelectItem":true,"iconItemColor":"line-2","applyToInBetweenQuantities":true}}'
@@ -188,7 +204,7 @@
       role="presentation"
       data-id="giibGA7KJt"
       style="--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:left"
-      class="gp-group/image gp-relative force-publish-1772200088960 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto giibGA7KJt"
+      class="gp-group/image gp-relative force-publish-1774430584996 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto giibGA7KJt"
     >
       <div
         
@@ -349,7 +365,7 @@
       role="presentation"
       data-id="gkU_MrNMo2"
       style="--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:center;--ta-mobile:left"
-      class="gp-group/image gp-relative force-publish-1772200088962 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gkU_MrNMo2"
+      class="gp-group/image gp-relative force-publish-1774430584998 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gkU_MrNMo2"
     >
       <div
         
@@ -742,7 +758,7 @@
       role="presentation"
       data-id="gHHRI1LVh0"
       style="--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:center;--ta-mobile:left"
-      class="gp-group/image gp-relative force-publish-1772200088966 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gHHRI1LVh0"
+      class="gp-group/image gp-relative force-publish-1774430585001 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gHHRI1LVh0"
     >
       <div
         
@@ -1151,7 +1167,7 @@
       role="presentation"
       data-id="gD4SKJCeR_"
       style="--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:left"
-      class="gp-group/image gp-relative force-publish-1772200088980 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gD4SKJCeR_"
+      class="gp-group/image gp-relative force-publish-1774430585016 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gD4SKJCeR_"
     >
       <div
         
@@ -1354,7 +1370,7 @@
       role="presentation"
       data-id="gh9GfuZxql"
       style="--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:center"
-      class="gp-group/image gp-relative force-publish-1772200088983 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gh9GfuZxql"
+      class="gp-group/image gp-relative force-publish-1774430585019 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gh9GfuZxql"
     >
       <div
         
@@ -1769,7 +1785,7 @@
       role="presentation"
       data-id="g1S2yHHBPi"
       style="--d:block;--d-tablet:block;--d-mobile:block;--bs:none;--bw:1px 1px 1px 1px;--bc:var(--g-c-line-3, line-3);--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--op:100%;--ta:center"
-      class="gp-group/image gp-relative force-publish-1772200089001 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto g1S2yHHBPi"
+      class="gp-group/image gp-relative force-publish-1774430585042 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto g1S2yHHBPi"
     >
       <div
         
@@ -2138,11 +2154,11 @@
     <gp-product-button
       
       gp-data-wrapper="true"
-      gp-href="{{ request.origin }}{{ routes.root_url | split: '/' | join: '/' }}/cart"
+      gp-href=""
       class="gp-product-button"
       gp-label-out-of-stock="{{ section.settings.ggZR9PHoZV3_outOfStockLabel }}"
       gp-label-unavailable="{{ section.settings.ggZR9PHoZV3_unavailableLabel }}"
-      gp-data='{"styles":{"errorTypo":{"type":"paragraph-2","attrs":{"color":"error"}},"successTypo":{"type":"paragraph-2","attrs":{"color":"success"}}},"setting":{"errorType":"built-in","actionEffect":"open-cart-drawer","enableMessage":true,"label":"In den Warenkorb","errorMessage":"Cannot add product to cart","successMessage":"Add product to cart successfully","outOfStockLabel":"Out of stock","customURL":{"link":"","target":"_self"}},"variantID":"{{variant.id}}","disabled":"{{variant.available}}","totalVariant":"{{total_combinations}}"}'
+      gp-data='{"styles":{"errorTypo":{"type":"paragraph-2","attrs":{"color":"error"}},"successTypo":{"type":"paragraph-2","attrs":{"color":"success"}}},"setting":{"errorType":"built-in","actionEffect":"continue-shopping","enableMessage":true,"label":"In den Warenkorb","errorMessage":"Cannot add product to cart","successMessage":"Add product to cart successfully","outOfStockLabel":"Out of stock","customURL":{"link":"","target":"_self"}},"variantID":"{{variant.id}}","disabled":"{{variant.available}}","totalVariant":"{{total_combinations}}"}'
       data-variant-selection-required-message="{{ section.settings.ggZR9PHoZV3_variantSelectionRequiredMessage }}"
       gp-enable-third-partycart="{{shop.metafields.GEMPAGES.enableThirdPartyCart}}"
     >
@@ -2733,7 +2749,7 @@
       role="presentation"
       data-id="gsTO1PvMg4"
       style="--bs:none;--bw:0px;--bc:transparent;--shadow:none;--d:block;--d-mobile:block;--d-tablet:block;--op:100%;--bblr:0px;--bbrr:0px;--btlr:0px;--btrr:0px;--mt:var(--g-s-m);--ta:left;--ta-mobile:center"
-      class="gp-group/image gp-relative force-publish-1772200089011 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gsTO1PvMg4"
+      class="gp-group/image gp-relative force-publish-1774430585051 gp-flex-none gp-h-auto mobile:gp-flex-none mobile:gp-h-auto tablet:gp-flex-none tablet:gp-h-auto gsTO1PvMg4"
     >
       <div
         
@@ -2743,16 +2759,16 @@
         
     <picture style="border-radius:inherit" class="gp-contents">
       
-      <source media="(max-width: 767px)" data-srcSet="https://ucarecdn.com/3615a054-b685-4059-9160-8906550b0b1e/-/format/auto/" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzg2IiBoZWlnaHQ9IjgyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGRlZnM+CiAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZy03ODYtODIiPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iMjAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNTAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNzAlIiAvPgogICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9Ijc4NiIgaGVpZ2h0PSI4MiIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNzg2IiBoZWlnaHQ9IjgyIiBmaWxsPSJ1cmwoI2ctNzg2LTgyKSIgLz4KICAgIDxhbmltYXRlIHhsaW5rOmhyZWY9IiNyIiBhdHRyaWJ1dGVOYW1lPSJ4IiBmcm9tPSItNzg2IiB0bz0iNzg2IiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" />
-      <source media="(max-width: 1024px)" data-srcSet="https://ucarecdn.com/3615a054-b685-4059-9160-8906550b0b1e/-/format/auto/" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzg2IiBoZWlnaHQ9IjgyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGRlZnM+CiAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZy03ODYtODIiPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iMjAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNTAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNzAlIiAvPgogICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9Ijc4NiIgaGVpZ2h0PSI4MiIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNzg2IiBoZWlnaHQ9IjgyIiBmaWxsPSJ1cmwoI2ctNzg2LTgyKSIgLz4KICAgIDxhbmltYXRlIHhsaW5rOmhyZWY9IiNyIiBhdHRyaWJ1dGVOYW1lPSJ4IiBmcm9tPSItNzg2IiB0bz0iNzg2IiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" />
+      <source media="(max-width: 767px)" data-srcSet="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctMTA2My05NCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0idXJsKCNnLTEwNjMtOTQpIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii0xMDYzIiB0bz0iMTA2MyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiICAvPgogIDwvc3ZnPg==" />
+      <source media="(max-width: 1024px)" data-srcSet="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}" srcset="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctMTA2My05NCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0idXJsKCNnLTEwNjMtOTQpIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii0xMDYzIiB0bz0iMTA2MyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiICAvPgogIDwvc3ZnPg==" />
     
       
       <img
-        title="Image Title" base-src="https://ucarecdn.com/3615a054-b685-4059-9160-8906550b0b1e/-/format/auto/" quality-type="{}" quality-percent="{}"
-        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzg2IiBoZWlnaHQ9IjgyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPGRlZnM+CiAgICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZy03ODYtODIiPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iMjAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNTAlIiAvPgogICAgICAgIDxzdG9wIHN0b3AtY29sb3I9InJnYmEoNTEsIDUxLCA1MSwgMCkiIG9mZnNldD0iNzAlIiAvPgogICAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPC9kZWZzPgogICAgPHJlY3Qgd2lkdGg9Ijc4NiIgaGVpZ2h0PSI4MiIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iNzg2IiBoZWlnaHQ9IjgyIiBmaWxsPSJ1cmwoI2ctNzg2LTgyKSIgLz4KICAgIDxhbmltYXRlIHhsaW5rOmhyZWY9IiNyIiBhdHRyaWJ1dGVOYW1lPSJ4IiBmcm9tPSItNzg2IiB0bz0iNzg2IiBkdXI9IjFzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgIC8+CiAgPC9zdmc+" data-src="https://ucarecdn.com/3615a054-b685-4059-9160-8906550b0b1e/-/format/auto/"
+        title="Image Title" base-src="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}" quality-type="{}" quality-percent="{}"
+        src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj4KICAgIDxkZWZzPgogICAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImctMTA2My05NCI+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSIyMCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI1MCUiIC8+CiAgICAgICAgPHN0b3Agc3RvcC1jb2xvcj0icmdiYSg1MSwgNTEsIDUxLCAwKSIgb2Zmc2V0PSI3MCUiIC8+CiAgICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8L2RlZnM+CiAgICA8cmVjdCB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0icmdiYSg1MSwgNTEsIDUxLCAwKSIgLz4KICAgIDxyZWN0IGlkPSJyIiB3aWR0aD0iMTA2MyIgaGVpZ2h0PSI5NCIgZmlsbD0idXJsKCNnLTEwNjMtOTQpIiAvPgogICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3IiIGF0dHJpYnV0ZU5hbWU9IngiIGZyb209Ii0xMDYzIiB0bz0iMTA2MyIgZHVyPSIxcyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiICAvPgogIDwvc3ZnPg==" data-src="{{ "payment_icons_3688ce4f-1eb4-43ab-b621-eab0252c1df3.png" | file_url }}"
         alt="Alt Image"
         width="100%"
-        style="--aspect:auto;--objf:cover;--w:262px;--w-tablet:262px;--w-mobile:262px;--h:auto;--h-tablet:auto;--h-mobile:auto"
+        style="--aspect:auto;--objf:cover;--w:80%;--w-tablet:262px;--w-mobile:262px;--h:auto;--h-tablet:auto;--h-mobile:auto"
         class="gp-inline-block gp-w-full gp-max-w-full gp_lazyload"
       />
     
