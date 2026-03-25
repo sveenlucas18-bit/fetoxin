@@ -1,1 +1,37 @@
-{"type":"footer","name":"Footer","sections":{},"order":[]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "gp_global_section_606289208251777591_EEWcq7": {
+      "type": "gp-global-section-606289208251777591",
+      "name": "Footer",
+      "settings": {
+        "section_preload": "off_lazy_script",
+        "checksum": "",
+        "ggeTY4QTbj7_text": "<p><a href=\"#\">Home</a></p>",
+        "ggPRbRQnGV8_text": "<p><a href=\"#\">Produkte</a></p>",
+        "ggBY3wrmroT_text": "<p><a href=\"#\">Versand</a></p>",
+        "ggb-xhtcMH7_text": "<p><a href=\"#\">Widerrufsbelehrung</a></p>",
+        "ggvNC-5Buht_text": "<p><a href=\"#\">Allgemeine Geschäftsbedingungen</a></p>",
+        "ggdHsP6WCqw_text": "<p><a href=\"#\">Wissenswertes</a></p>",
+        "gg3Im1YPiXV_text": "<p><a href=\"#\">Impressum</a></p>",
+        "gg0w-0A6RY4_text": "<p><a href=\"#\">Kontakt</a></p>",
+        "ggDHJWAW9Gy_text": "<p>Zahlungsarten</p>",
+        "ggejSiWmhTH_text": "<p>Versand</p>",
+        "ggE15oDDq8P_text": "<p>Bekannt aus</p>"
+      }
+    }
+  },
+  "order": [
+    "gp_global_section_606289208251777591_EEWcq7"
+  ]
+}
